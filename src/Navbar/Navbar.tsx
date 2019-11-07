@@ -19,15 +19,19 @@ export const Navbar = () => {
                 minHeight: "5vw",
                 borderRadius: "20px"
               }}
-              src="https://ik.imagekit.io/3aek1kxt2/Pi_Crafters_Logo.png?tr=w-200"
+              alt="Logo"
+              src="https://ik.imagekit.io/3aek1kxt2/pi-crafters/Pi_Crafters_Logo.png?tr=w-200"
             />
           </IconButton>
         </Link>
         <Link to="/about">
           <Button color="inherit">About</Button>
         </Link>
-        <Link to="/music">
-          <Button color="inherit">Music</Button>
+        <Link to="/classes">
+          <Button color="inherit">Classes</Button>
+        </Link>
+        <Link to="/workshops">
+          <Button color="inherit">Workshops</Button>
         </Link>
       </Toolbar>
     </AppBar>
