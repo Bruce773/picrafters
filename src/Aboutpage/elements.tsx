@@ -12,7 +12,7 @@ export const Header = styled.div`
 export const MainParagraphText = styled.div`
   color: ${brightBlue};
   font-size: 22px;
-  white-space: pre;
+  white-space: pre-wrap;
+  line-height: 1.4;
   text-align: left;
-  margin: auto;
 `;

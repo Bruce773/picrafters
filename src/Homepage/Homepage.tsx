@@ -4,11 +4,11 @@ import Box from "@material-ui/core/Box";
 import { Image, Link } from "../GlobalComponents";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
-import { brightBlue } from "../colors";
+import { brightBlue, darkGrey } from "../colors";
 
 export const Homepage = () => (
   <Box fontSize={{ xs: "30px", md: "40px" }}>
-    <Header>Welcome to Pi Crafters!</Header>
+    <Header color={darkGrey}>Welcome to Pi Crafters!</Header>
     <Link to="/workshops">
       <Button
         style={{
