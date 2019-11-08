@@ -7,8 +7,12 @@ import { brightBlue } from "../colors";
 export const Navbar = () => {
   return (
     <AppBar
-      style={{ backgroundColor: "white", padding: "0px", top: "0px" }}
-      position="static"
+      style={{
+        backgroundColor: "white",
+        padding: "0px",
+        top: "0px",
+        position: "sticky"
+      }}
     >
       <Toolbar style={{ color: brightBlue }}>
         <Link to="/">
