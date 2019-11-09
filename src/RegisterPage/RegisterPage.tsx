@@ -2,13 +2,13 @@ import { Button } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
 import Divider from "@material-ui/core/Divider";
 import FormControl from "@material-ui/core/FormControl";
-import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import React, { Dispatch, SetStateAction, useState } from "react";
-import { brightBlue, lightGrey } from "../colors";
+import { brightBlue } from "../colors";
 import { Header, Link } from "../GlobalComponents";
+import { StyledInput } from "./elements";
 
 interface FormFieldsTypes {
   updateValue: Dispatch<SetStateAction<string>>;
@@ -22,7 +22,7 @@ const SeeMoreInfoSection: React.FC<{ workShopName: string }> = ({
 }) => (
   <Header style={{ marginTop: "24px", fontSize: "20px" }}>
     Click{" "}
-    <Link to="/workshops" style={{ color: brightBlue }}>
+    <Link target="_blank" to="/workshops" style={{ color: brightBlue }}>
       HERE
     </Link>{" "}
     to see more information about the {workShopName} Workshop
@@ -30,6 +30,7 @@ const SeeMoreInfoSection: React.FC<{ workShopName: string }> = ({
 );
 
 const MoreInfo: React.FC<{ classType: string }> = ({ classType }) => {
+
   if (classType.includes("Kids")) {
     return <SeeMoreInfoSection workShopName="Kids" />;
   } else if (classType.includes("Adults")) {
@@ -68,23 +69,16 @@ export const RegisterPage: React.FC = () => {
         <Divider style={{ marginTop: "25px", marginBottom: "30px" }} />
         {formFields.map(({ label, value, updateValue, style }) => (
           <div style={style}>
-            <Input
+            <StyledInput
               onChange={({ target: { value } }) => updateValue(value)}
               value={value}
               placeholder={label}
               disableUnderline
-              style={{
-                padding: "6px 16px",
-                borderRadius: "6px",
-                backgroundColor: lightGrey,
-                fontSize: "24px",
-                color: brightBlue
-              }}
             />
           </div>
         ))}
         <FormControl style={{ width: "430px", marginTop: "20px" }}>
-          <InputLabel style={{ fontSize: "24px" }}>Program</InputLabel>
+          <InputLabel style={{ fontSize: "24px" }}>Select a Program</InputLabel>
           <Select
             onChange={({ target: { value } }) => {
               console.log(value);
@@ -102,8 +96,14 @@ export const RegisterPage: React.FC = () => {
           </Select>
         </FormControl>
         <MoreInfo classType={classType} />
-        <Button>Submit</Button>
       </Container>
+      <Button
+        onClick={() => console.log(name, email, classType)}
+        variant="contained"
+        style={{ marginTop: "25px", fontSize: "16px" }}
+      >
+        Register
+      </Button>
     </>
   );
 };
