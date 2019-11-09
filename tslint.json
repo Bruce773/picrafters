@@ -1,0 +1,8 @@
+{
+  "rules": {
+    "ordered-imports": [true],
+    "no-duplicate-imports": true,
+    "no-empty-line-after-opening-brace": true,
+    "ter-prefer-arrow-callback": [true]
+  }
+}

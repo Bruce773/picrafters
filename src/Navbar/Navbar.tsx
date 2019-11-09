@@ -1,8 +1,8 @@
-import React from "react";
+import { Button, IconButton, Toolbar } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
-import { Toolbar, IconButton, Button } from "@material-ui/core";
-import { Link } from "../GlobalComponents";
+import React from "react";
 import { brightBlue } from "../colors";
+import { Link } from "../GlobalComponents";
 
 export const Navbar: React.FC = () => {
   return (

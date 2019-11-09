@@ -1,9 +1,8 @@
-import React from "react";
-import { MainParagraphText, Header } from "./elements";
-import Grid from "@material-ui/core/Grid";
-import { PageWrapper } from "../GlobalComponents";
-import { Image } from "../GlobalComponents";
 import { Container, Divider } from "@material-ui/core";
+import Grid from "@material-ui/core/Grid";
+import React from "react";
+import { Image, PageWrapper } from "../GlobalComponents";
+import { Header, MainParagraphText } from "./elements";
 
 const InstructorData = [
   {

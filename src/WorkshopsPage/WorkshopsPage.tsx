@@ -1,5 +1,5 @@
-import React from "react";
 import Container from "@material-ui/core/Container";
+import React from "react";
 import { Header } from "../GlobalComponents";
 
 export const WorkshopsPage: React.FC = () => (

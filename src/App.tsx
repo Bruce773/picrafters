@@ -1,11 +1,11 @@
 import React from "react";
-import { Navbar } from "./Navbar";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import styled from "styled-components";
-import { HomePage } from "./HomePage";
 import { AboutPage } from "./AboutPage";
-import { WorkshopsPage } from "./WorkshopsPage";
+import { HomePage } from "./HomePage";
+import { Navbar } from "./Navbar";
 import { RegisterPage } from "./RegisterPage";
+import { WorkshopsPage } from "./WorkshopsPage";
 
 const MainPageWrapper = styled.div`
   font-family: "Work Sans", sans-serif;

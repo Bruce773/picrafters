@@ -1,13 +1,14 @@
-import React, { useState, Dispatch, SetStateAction } from "react";
-import Input from "@material-ui/core/Input";
-import { lightGrey, brightBlue } from "../colors";
-import { Header, Link } from "../GlobalComponents";
-import Divider from "@material-ui/core/Divider";
-import Select from "@material-ui/core/Select";
+import { Button } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
-import MenuItem from "@material-ui/core/MenuItem";
-import InputLabel from "@material-ui/core/InputLabel";
+import Divider from "@material-ui/core/Divider";
 import FormControl from "@material-ui/core/FormControl";
+import Input from "@material-ui/core/Input";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import Select from "@material-ui/core/Select";
+import React, { Dispatch, SetStateAction, useState } from "react";
+import { brightBlue, lightGrey } from "../colors";
+import { Header, Link } from "../GlobalComponents";
 
 interface FormFieldsTypes {
   updateValue: Dispatch<SetStateAction<string>>;
@@ -101,6 +102,7 @@ export const RegisterPage: React.FC = () => {
           </Select>
         </FormControl>
         <MoreInfo classType={classType} />
+        <Button>Submit</Button>
       </Container>
     </>
   );

@@ -1,10 +1,10 @@
-import React from "react";
-import { SecondaryHeader } from "./elements";
 import Box from "@material-ui/core/Box";
-import { Image, Link, Header } from "../GlobalComponents";
-import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
+import Paper from "@material-ui/core/Paper";
+import React from "react";
 import { brightBlue, darkGrey } from "../colors";
+import { Header, Image, Link } from "../GlobalComponents";
+import { SecondaryHeader } from "./elements";
 
 export const HomePage: React.FC = () => (
   <Box fontSize={{ xs: "30px", md: "40px" }}>
