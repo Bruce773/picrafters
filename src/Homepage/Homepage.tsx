@@ -1,12 +1,12 @@
 import React from "react";
-import { Header, SecondaryHeader } from "./elements";
+import { SecondaryHeader } from "./elements";
 import Box from "@material-ui/core/Box";
-import { Image, Link } from "../GlobalComponents";
+import { Image, Link, Header } from "../GlobalComponents";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import { brightBlue, darkGrey } from "../colors";
 
-export const Homepage = () => (
+export const HomePage: React.FC = () => (
   <Box fontSize={{ xs: "30px", md: "40px" }}>
     <Header color={darkGrey}>Welcome to Pi Crafters!</Header>
     <Link to="/workshops">

@@ -4,7 +4,7 @@ import { Toolbar, IconButton, Button } from "@material-ui/core";
 import { Link } from "../GlobalComponents";
 import { brightBlue } from "../colors";
 
-export const Navbar = () => {
+export const Navbar: React.FC = () => {
   return (
     <AppBar
       style={{
@@ -36,6 +36,9 @@ export const Navbar = () => {
         </Link>
         <Link to="/workshops">
           <Button color="inherit">Workshops</Button>
+        </Link>
+        <Link to="/register">
+          <Button color="inherit">Register</Button>
         </Link>
       </Toolbar>
     </AppBar>

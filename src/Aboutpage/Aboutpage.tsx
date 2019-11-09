@@ -38,7 +38,7 @@ const InstructorProfile: React.FC<{
   </>
 );
 
-export const Aboutpage = () => (
+export const AboutPage: React.FC = () => (
   <PageWrapper>
     <Container maxWidth="lg">
       {InstructorData.map(({ name, imageUrl, bio }) => (
