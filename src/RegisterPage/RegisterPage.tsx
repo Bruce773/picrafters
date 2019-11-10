@@ -5,6 +5,7 @@ import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
+import Snackbar from "@material-ui/core/Snackbar";
 import axios from "axios";
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { brightBlue } from "../colors";
@@ -51,6 +52,7 @@ export const RegisterPage: React.FC = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [classType, setClassType] = useState("");
+  const [constantClassType, setConstantClassType] = useState("");
   const [questions, setQuestions] = useState("");
   const [status, setStatus] = useState(0);
 
@@ -69,6 +71,10 @@ export const RegisterPage: React.FC = () => {
       .then(({ status }) => {
         setStatus(status);
         resetFormFields();
+      })
+      .catch(error => {
+        console.log(error);
+        if (`${error}`.includes("400")) setStatus(400);
       });
   };
 
@@ -97,6 +103,7 @@ export const RegisterPage: React.FC = () => {
           <div style={style}>
             <StyledInput
               onChange={({ target: { value } }) => updateValue(value)}
+              required
               value={value}
               placeholder={label}
               disableUnderline
@@ -106,8 +113,10 @@ export const RegisterPage: React.FC = () => {
         <FormControl style={{ width: "430px", marginTop: "20px" }}>
           <InputLabel style={{ fontSize: "24px" }}>Select a Program</InputLabel>
           <Select
+            required
             onChange={({ target: { value } }) => {
               setClassType(`${value}`);
+              setConstantClassType(`${value}`);
             }}
             value={classType}
             style={{ fontSize: "20px", marginTop: "25px", color: brightBlue }}
@@ -139,6 +148,22 @@ export const RegisterPage: React.FC = () => {
       >
         Register
       </Button>
+
+      <Snackbar
+        open={status === 200 || status === 400 ? true : false}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "left"
+        }}
+        autoHideDuration={5000}
+        message={
+          status === 200 ? (
+            <Header>🎉You are now registered for {constantClassType}!</Header>
+          ) : (
+            <Header color="red">Error! Please ensure you've filled out every field.</Header>
+          )
+        }
+      />
     </>
   );
 };
