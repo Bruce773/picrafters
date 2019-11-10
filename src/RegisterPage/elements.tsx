@@ -12,3 +12,17 @@ export const StyledInput = styled(Input)`
   }
   width: 432px;
 `;
+
+export const StyledMultiLineInput = styled(StyledInput)`
+  && {
+    display: block;
+  }
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  padding: 16px 6px;
+
+  textarea {
+    padding: 14px;
+  }
+`;

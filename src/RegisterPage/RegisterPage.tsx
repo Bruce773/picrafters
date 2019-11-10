@@ -5,16 +5,24 @@ import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
+import axios from "axios";
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { brightBlue } from "../colors";
 import { Header, Link } from "../GlobalComponents";
-import { StyledInput } from "./elements";
+import { StyledInput, StyledMultiLineInput } from "./elements";
 
 interface FormFieldsTypes {
   updateValue: Dispatch<SetStateAction<string>>;
   value: string;
   label: string;
   style?: React.CSSProperties;
+}
+
+interface FormData {
+  name: string;
+  email: string;
+  classType: string;
+  questions: string;
 }
 
 const SeeMoreInfoSection: React.FC<{ workShopName: string }> = ({
@@ -30,7 +38,6 @@ const SeeMoreInfoSection: React.FC<{ workShopName: string }> = ({
 );
 
 const MoreInfo: React.FC<{ classType: string }> = ({ classType }) => {
-
   if (classType.includes("Kids")) {
     return <SeeMoreInfoSection workShopName="Kids" />;
   } else if (classType.includes("Adults")) {
@@ -44,6 +51,26 @@ export const RegisterPage: React.FC = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [classType, setClassType] = useState("");
+  const [questions, setQuestions] = useState("");
+  const [status, setStatus] = useState(0);
+
+  const resetFormFields = () => {
+    [setName, setEmail, setClassType, setQuestions].forEach(item => item(""));
+  };
+
+  const submitFormDataToFormSpree = () => {
+    axios
+      .post("https://formspree.io/mjvvybwo", {
+        name,
+        email,
+        classType,
+        questions
+      })
+      .then(({ status }) => {
+        setStatus(status);
+        resetFormFields();
+      });
+  };
 
   const formFields: FormFieldsTypes[] = [
     {
@@ -61,7 +88,6 @@ export const RegisterPage: React.FC = () => {
 
   return (
     <>
-      {/* use https://mailchimp.com/developer/guides/manage-subscribers-with-the-mailchimp-api/ for form API*/}
       <Container maxWidth="md">
         <Header style={{ fontSize: "35px", marginTop: "25px" }}>
           Register for Pi Crafters
@@ -81,7 +107,6 @@ export const RegisterPage: React.FC = () => {
           <InputLabel style={{ fontSize: "24px" }}>Select a Program</InputLabel>
           <Select
             onChange={({ target: { value } }) => {
-              console.log(value);
               setClassType(`${value}`);
             }}
             value={classType}
@@ -97,8 +122,18 @@ export const RegisterPage: React.FC = () => {
         </FormControl>
         <MoreInfo classType={classType} />
       </Container>
+      <StyledMultiLineInput
+        onChange={({ target: { value } }) => setQuestions(value)}
+        value={questions}
+        placeholder="Questions or comments"
+        multiline
+        disableUnderline
+        rows={4}
+      />
       <Button
-        onClick={() => console.log(name, email, classType)}
+        onClick={() => {
+          submitFormDataToFormSpree();
+        }}
         variant="contained"
         style={{ marginTop: "25px", fontSize: "16px" }}
       >
