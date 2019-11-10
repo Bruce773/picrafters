@@ -1,4 +1,5 @@
 import { Button } from "@material-ui/core";
+import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Divider from "@material-ui/core/Divider";
 import FormControl from "@material-ui/core/FormControl";
@@ -94,78 +95,89 @@ export const RegisterPage: React.FC = () => {
 
   return (
     <>
-      <Container maxWidth="md" style={{ textAlign: "center", margin: "auto" }}>
-        <Header style={{ fontSize: "35px", marginTop: "25px" }}>
-          Register for Pi Crafters
-        </Header>
-        <Divider style={{ marginTop: "25px", marginBottom: "30px" }} />
-        {formFields.map(({ label, value, updateValue, style }) => (
-          <div style={style}>
-            <StyledInput
-              onChange={({ target: { value } }) => updateValue(value)}
-              required
-              value={value}
-              placeholder={label}
-              disableUnderline
-            />
-          </div>
-        ))}
-        <FormControl style={{ width: "430px", marginTop: "20px" }}>
-          <InputLabel style={{ fontSize: "24px" }}>Select a Program</InputLabel>
-          <Select
-            required
-            onChange={({ target: { value } }) => {
-              setClassType(`${value}`);
-              setConstantClassType(`${value}`);
-            }}
-            value={classType}
-            style={{ fontSize: "20px", marginTop: "25px", color: brightBlue }}
-          >
-            <MenuItem value="Kids Robotics (Workshop)">
-              Kids Robotics (Workshop)
-            </MenuItem>
-            <MenuItem value="Adults Software Engineering (Workshop)">
-              Adults Software Engineering (Workshop)
-            </MenuItem>
-          </Select>
-        </FormControl>
-        <MoreInfo classType={classType} />
-      </Container>
-      <StyledMultiLineInput
-        onChange={({ target: { value } }) => setQuestions(value)}
-        value={questions}
-        placeholder="Questions or comments"
-        multiline
-        disableUnderline
-        rows={4}
-      />
-      <Button
-        onClick={() => {
-          submitFormDataToFormSpree();
-        }}
-        variant="contained"
-        style={{ marginTop: "25px", fontSize: "16px" }}
+      <Box
+        marginLeft={{ xs: "-2%", md: "auto" }}
+        width={{ xs: "385px", md: "560px" }}
+        margin="auto"
       >
-        Register
-      </Button>
+        <Container
+          maxWidth="md"
+          style={{ textAlign: "center", margin: "auto" }}
+        >
+          <Header style={{ fontSize: "35px", marginTop: "25px" }}>
+            Register for Pi Crafters
+          </Header>
+          <Divider style={{ marginTop: "25px", marginBottom: "30px" }} />
+          {formFields.map(({ label, value, updateValue, style }) => (
+            <div style={style}>
+              <StyledInput
+                onChange={({ target: { value } }) => updateValue(value)}
+                required
+                value={value}
+                placeholder={label}
+                disableUnderline
+              />
+            </div>
+          ))}
+          <FormControl style={{ width: "330px", marginTop: "20px" }}>
+            <InputLabel style={{ fontSize: "24px" }}>
+              Select a Program
+            </InputLabel>
+            <Select
+              required
+              onChange={({ target: { value } }) => {
+                setClassType(`${value}`);
+                setConstantClassType(`${value}`);
+              }}
+              value={classType}
+              style={{ fontSize: "20px", marginTop: "25px", color: brightBlue }}
+            >
+              <MenuItem value="Kids Robotics (Workshop)">
+                Kids Robotics (Workshop)
+              </MenuItem>
+              <MenuItem value="Adults Software Engineering (Workshop)">
+                Adults Software Engineering (Workshop)
+              </MenuItem>
+            </Select>
+          </FormControl>
+          <MoreInfo classType={classType} />
+        </Container>
+        <StyledMultiLineInput
+          onChange={({ target: { value } }) => setQuestions(value)}
+          value={questions}
+          placeholder="Questions or comments"
+          multiline
+          disableUnderline
+          rows={4}
+        />
+        <Button
+          onClick={() => {
+            submitFormDataToFormSpree();
+          }}
+          variant="contained"
+          style={{ marginTop: "25px", fontSize: "16px" }}
+        >
+          Register
+        </Button>
 
-      <Snackbar
-        open={status === 200 || status === 400 ? true : false}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "left"
-        }}
-        autoHideDuration={5000}
-        message={
-          status === 200 ? (
-            <Header>🎉You are now registered for {constantClassType}!</Header>
-          ) : (
-            <Header color="red">
-              Error! Please ensure you've filled out every field.
-            </Header>
-          )
-        }
-      />
+        <Snackbar
+          open={status === 200 || status === 400 ? true : false}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "left"
+          }}
+          autoHideDuration={5000}
+          message={
+            status === 200 ? (
+              <Header>🎉You are now registered for {constantClassType}!</Header>
+            ) : (
+              <Header color="red">
+                Error! Please ensure you've filled out every field.
+              </Header>
+            )
+          }
+        />
+      </Box>
     </>
   );
 };

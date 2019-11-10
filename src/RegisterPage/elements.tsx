@@ -10,7 +10,10 @@ export const StyledInput = styled(Input)`
   && {
     color: ${brightBlue};
   }
-  width: 432px;
+  .MuiInputBase-input {
+    width: 120%;
+    min-width: 300px;
+  }
 `;
 
 export const StyledMultiLineInput = styled(StyledInput)`
@@ -25,4 +28,6 @@ export const StyledMultiLineInput = styled(StyledInput)`
   textarea {
     padding: 14px;
   }
+
+  width: inherit;
 `;
