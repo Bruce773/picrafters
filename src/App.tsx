@@ -1,3 +1,4 @@
+import Box from "@material-ui/core/Box";
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import styled from "styled-components";
@@ -16,14 +17,16 @@ const MainPageWrapper = styled.div`
 const App: React.FC = () => (
   <Router>
     <Navbar />
-    <MainPageWrapper>
-      <Switch>
-        <Route exact path="/" render={() => <HomePage />} />
-        <Route path="/about" render={() => <AboutPage />} />
-        <Route path="/workshops" render={() => <WorkshopsPage />} />
-        <Route path="/register" render={() => <RegisterPage />} />
-      </Switch>
-    </MainPageWrapper>
+    <Box marginLeft={{ xs: "10%", md: "auto" }}>
+      <MainPageWrapper>
+        <Switch>
+          <Route exact path="/" render={() => <HomePage />} />
+          <Route path="/about" render={() => <AboutPage />} />
+          <Route path="/workshops" render={() => <WorkshopsPage />} />
+          <Route path="/register" render={() => <RegisterPage />} />
+        </Switch>
+      </MainPageWrapper>
+    </Box>
     {/* <Footer /> */}
   </Router>
 );

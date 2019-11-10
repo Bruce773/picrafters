@@ -94,7 +94,7 @@ export const RegisterPage: React.FC = () => {
 
   return (
     <>
-      <Container maxWidth="md">
+      <Container maxWidth="md" style={{ textAlign: "center", margin: "auto" }}>
         <Header style={{ fontSize: "35px", marginTop: "25px" }}>
           Register for Pi Crafters
         </Header>
@@ -160,7 +160,9 @@ export const RegisterPage: React.FC = () => {
           status === 200 ? (
             <Header>🎉You are now registered for {constantClassType}!</Header>
           ) : (
-            <Header color="red">Error! Please ensure you've filled out every field.</Header>
+            <Header color="red">
+              Error! Please ensure you've filled out every field.
+            </Header>
           )
         }
       />
