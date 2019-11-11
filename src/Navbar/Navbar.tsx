@@ -39,7 +39,7 @@ const NavMenu: React.FC<{
 );
 
 export const Navbar: React.FC = () => {
-  const isMobile = useMediaQuery(mobileLg);
+  const isMobile = useMediaQuery(mobileLg); // Material UI hook
   const [showFullScreenUserMenu, setShowFullScreenUserMenu] = useState(false);
 
   return (
