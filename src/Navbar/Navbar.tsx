@@ -1,24 +1,56 @@
 import AppBar from "@material-ui/core/AppBar";
-import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import Toolbar from "@material-ui/core/Toolbar";
-import React from "react";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import MenuIcon from "@material-ui/icons/Menu";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import { brightBlue } from "../colors";
 import { Link } from "../GlobalComponents";
+import { mobileLg } from "../Utils";
+import { MenuWrapper, StyledNavMenuLink } from "./elements";
+
+const NavItems = ["About", "Classes", "Workshops", "Register"];
+
+const NavLinks: React.FC = () => (
+  <>
+    {NavItems.map((itemName: string) => (
+      <Link to={`/${itemName.toLowerCase()}`}>
+        <Button style={{ color: brightBlue }}>{itemName}</Button>
+      </Link>
+    ))}
+  </>
+);
+
+const NavMenu: React.FC<{
+  show: boolean;
+  setShow: Dispatch<SetStateAction<boolean>>;
+}> = ({ show, setShow }) => (
+  <MenuWrapper show={show}>
+    {NavItems.map((itemName: string) => (
+      <StyledNavMenuLink
+        onClick={() => setShow(false)}
+        to={`/${itemName.toLowerCase()}`}
+      >
+        <Button style={{ color: brightBlue, width: "100%" }}>{itemName}</Button>
+      </StyledNavMenuLink>
+    ))}
+  </MenuWrapper>
+);
 
 export const Navbar: React.FC = () => {
+  const isMobile = useMediaQuery(mobileLg);
+  const [showFullScreenUserMenu, setShowFullScreenUserMenu] = useState(false);
+
   return (
-    <Box width={{ xs: "120vw", md: "auto" }}>
+    <>
       <AppBar
         style={{
           backgroundColor: "white",
-          padding: "0px",
-          top: "0px",
-          position: "sticky"
+          padding: "0px"
         }}
       >
-        <Toolbar style={{ color: brightBlue }}>
+        <Toolbar>
           <Link to="/">
             <IconButton style={{ padding: "4px" }}>
               <img
@@ -32,20 +64,22 @@ export const Navbar: React.FC = () => {
               />
             </IconButton>
           </Link>
-          <Link to="/about">
-            <Button color="inherit">About</Button>
-          </Link>
-          <Link to="/classes">
-            <Button color="inherit">Classes</Button>
-          </Link>
-          <Link to="/workshops">
-            <Button color="inherit">Workshops</Button>
-          </Link>
-          <Link to="/register">
-            <Button color="inherit">Register</Button>
-          </Link>
+          {!isMobile ? (
+            <NavLinks />
+          ) : (
+            <IconButton
+              onClick={() => setShowFullScreenUserMenu(!showFullScreenUserMenu)}
+              style={{ textAlign: "right", marginLeft: "auto" }}
+            >
+              <MenuIcon style={{ height: "30px", width: "30px" }} />
+            </IconButton>
+          )}
         </Toolbar>
       </AppBar>
-    </Box>
+      <NavMenu
+        setShow={setShowFullScreenUserMenu}
+        show={showFullScreenUserMenu}
+      />
+    </>
   );
 };

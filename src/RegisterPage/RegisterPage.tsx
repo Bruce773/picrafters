@@ -58,7 +58,9 @@ export const RegisterPage: React.FC = () => {
   const [status, setStatus] = useState(0);
 
   const resetFormFields = () => {
-    [setName, setEmail, setClassType, setQuestions].forEach(item => item(""));
+    [setName, setEmail, setClassType, setQuestions].forEach(
+      (item: (arg0: string) => void) => item("")
+    );
   };
 
   const submitFormDataToFormSpree = () => {
@@ -96,8 +98,8 @@ export const RegisterPage: React.FC = () => {
   return (
     <>
       <Box
-        marginLeft={{ xs: "-2%", md: "auto" }}
-        width={{ xs: "385px", md: "560px" }}
+        marginLeft={{ xs: "-2%", sm: "auto" }}
+        width={{ xs: "385px", sm: "560px" }}
         margin="auto"
       >
         <Container

@@ -9,7 +9,7 @@ import { SecondaryHeader } from "./elements";
 export const HomePage: React.FC = () => (
   <Box fontSize={{ xs: "30px", md: "40px" }}>
     <Header color={darkGrey}>Welcome to Pi Crafters!</Header>
-    <Link to="/workshops">
+    {/* <Link to="/workshops">
       <Button
         style={{
           maxWidth: "470px",
@@ -27,6 +27,6 @@ export const HomePage: React.FC = () => (
           />
         </Paper>
       </Button>
-    </Link>
+    </Link> */}
   </Box>
 );

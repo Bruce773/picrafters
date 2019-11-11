@@ -1,4 +1,3 @@
-import Box from "@material-ui/core/Box";
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import styled from "styled-components";
@@ -11,22 +10,20 @@ import { WorkshopsPage } from "./WorkshopsPage";
 const MainPageWrapper = styled.div`
   font-family: "Work Sans", sans-serif;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 14vh;
 `;
 
 const App: React.FC = () => (
   <Router>
     <Navbar />
-    <Box marginLeft={{ xs: "10%", md: "auto" }}>
-      <MainPageWrapper>
-        <Switch>
-          <Route exact path="/" render={() => <HomePage />} />
-          <Route path="/about" render={() => <AboutPage />} />
-          <Route path="/workshops" render={() => <WorkshopsPage />} />
-          <Route path="/register" render={() => <RegisterPage />} />
-        </Switch>
-      </MainPageWrapper>
-    </Box>
+    <MainPageWrapper>
+      <Switch>
+        <Route exact path="/" render={() => <HomePage />} />
+        <Route path="/about" render={() => <AboutPage />} />
+        <Route path="/workshops" render={() => <WorkshopsPage />} />
+        <Route path="/register" render={() => <RegisterPage />} />
+      </Switch>
+    </MainPageWrapper>
     {/* <Footer /> */}
   </Router>
 );
