@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import styled from "styled-components";
 import { AboutPage } from "./AboutPage";
+import { Footer } from "./Footer";
 import { HomePage } from "./HomePage";
 import { Navbar } from "./Navbar";
 import { RegisterPage } from "./RegisterPage";
@@ -24,7 +25,7 @@ const App: React.FC = () => (
         <Route path="/register" render={() => <RegisterPage />} />
       </Switch>
     </MainPageWrapper>
-    {/* <Footer /> */}
+    <Footer />
   </Router>
 );
 
