@@ -23,11 +23,13 @@ export const StyledMultiLineInput = styled(StyledInput)`
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
-  padding: 16px 6px;
+  width: fit-content;
 
-  textarea {
-    padding: 14px;
+  && {
+    padding: 16px;
   }
 
-  width: inherit;
+  .MuiInputBase-input {
+    width: auto;
+  }
 `;

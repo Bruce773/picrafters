@@ -125,15 +125,15 @@ export const RegisterPage: React.FC = () => {
           </Select>
         </FormControl>
         <MoreInfo classType={classType} />
+        <StyledMultiLineInput
+          onChange={({ target: { value } }) => setQuestions(value)}
+          value={questions}
+          placeholder="Questions or comments"
+          multiline
+          disableUnderline
+          rows={4}
+        />
       </Container>
-      <StyledMultiLineInput
-        onChange={({ target: { value } }) => setQuestions(value)}
-        value={questions}
-        placeholder="Questions or comments"
-        multiline
-        disableUnderline
-        rows={4}
-      />
       <Button
         onClick={() => {
           submitFormDataToFormSpree();
