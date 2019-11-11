@@ -1,5 +1,6 @@
 import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
+import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import IconButton from "@material-ui/core/IconButton";
 import Toolbar from "@material-ui/core/Toolbar";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
@@ -26,16 +27,24 @@ const NavMenu: React.FC<{
   show: boolean;
   setShow: Dispatch<SetStateAction<boolean>>;
 }> = ({ show, setShow }) => (
-  <MenuWrapper show={show}>
-    {NavItems.map((itemName: string) => (
-      <StyledNavMenuLink
-        onClick={() => setShow(false)}
-        to={`/${itemName.toLowerCase()}`}
-      >
-        <Button style={{ color: brightBlue, width: "100%" }}>{itemName}</Button>
-      </StyledNavMenuLink>
-    ))}
-  </MenuWrapper>
+  <ClickAwayListener
+    // touchEvent={!show && show}
+    mouseEvent={!show && show}
+    onClickAway={() => setShow(false)}
+  >
+    <MenuWrapper show={show}>
+      {NavItems.map((itemName: string) => (
+        <StyledNavMenuLink
+          onClick={() => setShow(false)}
+          to={`/${itemName.toLowerCase()}`}
+        >
+          <Button style={{ color: brightBlue, width: "100%" }}>
+            {itemName}
+          </Button>
+        </StyledNavMenuLink>
+      ))}
+    </MenuWrapper>
+  </ClickAwayListener>
 );
 
 export const Navbar: React.FC = () => {
