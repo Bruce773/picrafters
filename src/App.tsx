@@ -11,7 +11,7 @@ import { WorkshopsPage } from "./WorkshopsPage";
 const MainPageWrapper = styled.div`
   font-family: "Work Sans", sans-serif;
   text-align: center;
-  margin-top: 14vh;
+  margin-top: 12vh;
 `;
 
 const App: React.FC = () => (
