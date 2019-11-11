@@ -10,7 +10,7 @@ import { Link } from "../GlobalComponents";
 import { mobileLg } from "../Utils";
 import { NavMenu } from "./NavMenu";
 
-const navItems = ["About", "Classes", "Workshops", "Register"];
+const navItems = ["About", "Workshops", "Register"];
 
 const NavLinks: React.FC = () => (
   <>
