@@ -1,8 +1,8 @@
 import { Container, Divider } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import React from "react";
-import { Image, PageWrapper } from "../GlobalComponents";
-import { Header, MainParagraphText } from "./elements";
+import { Image, PageWrapper, ParagraphText } from "../GlobalComponents";
+import { Header } from "./elements";
 
 const InstructorData = [
   {
@@ -34,7 +34,7 @@ const InstructorProfile: React.FC<{
         />
       </Grid>
       <Grid item xs={12} md={6}>
-        <MainParagraphText>{bio}</MainParagraphText>
+        <ParagraphText>{bio}</ParagraphText>
       </Grid>
     </Grid>
   </>
@@ -52,9 +52,9 @@ export const AboutPage: React.FC = () => (
       <Header style={{ fontSize: "28px", textAlign: "left" }}>
         Why is it called "Pi Crafters"
       </Header>
-      <MainParagraphText>{`One of my very first computers was the Raspberry Pi B+. I learned everything from coding to electronics on that Pi. The Pi even had its own version of Minecraft, which allowed you to play in a world with other Raspberry Pi owners. My three younger brothers and I were avid Minecrafters at the time, so I saved up enough money to buy each of us a Raspberry Pi.
+      <ParagraphText>{`One of my very first computers was the Raspberry Pi B+. I learned everything from coding to electronics on that Pi. The Pi even had its own version of Minecraft, which allowed you to play in a world with other Raspberry Pi owners. My three younger brothers and I were avid Minecrafters at the time, so I saved up enough money to buy each of us a Raspberry Pi.
 
-We had so much fun playing Minecraft at our dining room table together that I thought to myself, "I bet other people would enjoy this, too!" So, I went down to my local library that afternoon and asked if I could book one of their rooms for an hour the next week. They said yes! And our first "Pi Crafters" group met the following Wednesday to play Minecraft Pi Edition. I found several tutorials on the Raspberry Pi website that taught you how to modify parts of the game with a popular programming language called Python. So, in the next meeting, I showed everyone how to "hack" their games using code. And the Pi Crafters coding program was borne!`}</MainParagraphText>
+We had so much fun playing Minecraft at our dining room table together that I thought to myself, "I bet other people would enjoy this, too!" So, I went down to my local library that afternoon and asked if I could book one of their rooms for an hour the next week. They said yes! And our first "Pi Crafters" group met the following Wednesday to play Minecraft Pi Edition. I found several tutorials on the Raspberry Pi website that taught you how to modify parts of the game with a popular programming language called Python. So, in the next meeting, I showed everyone how to "hack" their games using code. And the Pi Crafters coding program was borne!`}</ParagraphText>
     </Container>
   </PageWrapper>
 );

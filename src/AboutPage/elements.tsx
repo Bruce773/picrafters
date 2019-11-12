@@ -10,10 +10,3 @@ export const Header = styled.div`
   margin-bottom: 15px;
 `;
 
-export const MainParagraphText = styled.div`
-  color: ${brightBlue};
-  font-size: 2.2vh;
-  white-space: pre-wrap;
-  line-height: 1.4;
-  text-align: left;
-`;
