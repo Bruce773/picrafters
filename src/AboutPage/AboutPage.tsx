@@ -9,6 +9,14 @@ const InstructorData = [
     name: "Bruce Johnson",
     imageUrl: "bruce_headshot_square.jpg",
     bio: `Hello! My name is Bruce Johnson. I'm currently a Software Engineer working for Yoga International in Honesdale, PA. I started coding when I was 12 years old using the Python language. After a few years of coding, I picked up the Arduino language and started working with electronics and robotics. Then, in 2015, I started a company called Pi Crafters to help kids and adults enjoy learning computer programing. I'm currently working on a bachelor's degree in Computer Science and plan to earn my master's degree in software engineering. And, I recently graduated from the Hack React Full Stack Web Development Immersive program which specializes in advanced software engineering skills.`
+  },
+  {
+    name: "Joseph Spinosa",
+    imageUrl: "joe_headshot_square.jpg",
+    bio: `My name is Joseph Spinosa. I became interested in coding in my freshmen year of college and declared a computer science major at the start of my sophomore year. I went on to earn a BS in computer science and an MS in software engineering from the University of Scranton. I’ve gained experience in numerous programming languages like java, c, python, swift, and javascript. During college I got a healthy dose of not only how to write code, but also some of the more theoretical aspects of computer science, as well as software engineering. In my final year of college I had a graduate assistantship where I taught a first year computer science lab. 
+  I currently am working as a junior web dev at Yoga International. I wish that I’d discovered coding sooner and am happy to help give others a head start! 
+  
+  Besides coding I enjoy playing guitar, hiking, and playing video games! I grew up in Honesdale and love seeing how lively its gotten in recent years. I’m happy to give back to the community by being a part of pi Crafters!`
   }
 ];
 
@@ -17,7 +25,7 @@ const InstructorProfile: React.FC<{
   imageUrl: string;
   bio: string;
 }> = ({ name, imageUrl, bio }) => (
-  <>
+  <div style={{ marginBottom: "20px" }}>
     <Header>{name}</Header>
     <Divider style={{ marginBottom: "20px", marginTop: "14px" }} />
     <Grid container>
@@ -37,7 +45,7 @@ const InstructorProfile: React.FC<{
         <ParagraphText>{bio}</ParagraphText>
       </Grid>
     </Grid>
-  </>
+  </div>
 );
 
 export const AboutPage: React.FC = () => (
