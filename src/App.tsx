@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import ScrollToTop from "react-router-scroll-top";
 import styled from "styled-components";
 import { AboutPage } from "./AboutPage";
 import { Footer } from "./Footer";
@@ -16,16 +17,18 @@ const MainPageWrapper = styled.div`
 
 const App: React.FC = () => (
   <Router>
-    <Navbar />
-    <MainPageWrapper>
-      <Switch>
-        <Route exact path="/" render={() => <HomePage />} />
-        <Route path="/about" render={() => <AboutPage />} />
-        <Route path="/workshops" render={() => <WorkshopsPage />} />
-        <Route path="/register" render={() => <RegisterPage />} />
-      </Switch>
-    </MainPageWrapper>
-    <Footer />
+    <ScrollToTop>
+      <Navbar />
+      <MainPageWrapper>
+        <Switch>
+          <Route exact path="/" render={() => <HomePage />} />
+          <Route path="/about" render={() => <AboutPage />} />
+          <Route path="/workshops" render={() => <WorkshopsPage />} />
+          <Route path="/register" render={() => <RegisterPage />} />
+        </Switch>
+      </MainPageWrapper>
+      <Footer />
+    </ScrollToTop>
   </Router>
 );
 
