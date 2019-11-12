@@ -49,6 +49,7 @@ export const WorkshopsPage: React.FC = () => (
           </ul>
         </Grid>
       </Grid>
+      <div style={{ textAlign: "center" }}>{`And so much more!`}</div>
     </ParagraphText>
   </Container>
 );
