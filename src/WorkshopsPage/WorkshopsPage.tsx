@@ -14,6 +14,27 @@ export const WorkshopsPage: React.FC = () => (
       size={300}
     />
     <Divider style={{ marginBottom: "20px", marginTop: "14px" }} />
+    <div style={{ lineHeight: "35px" }}>
+      <Header fontSize="24px">Location and times of both workshops</Header>
+      <ParagraphText>{`Both workshops will be held on the second floor of The Stourbridge Project building located in Honesdale, PA.`}</ParagraphText>
+      <Header fontSize="24px" style={{ display: "inline" }}>
+        Location:{" "}
+      </Header>{" "}
+      <Header style={{ display: "inline" }} color={brightBlue}>
+        {"The Stourbridge Project - 646 Park Street, Honesdale, PA. 18431"}
+      </Header>
+      <br />
+      <Header fontSize="24px" style={{ display: "inline" }}>
+        Times:{" "}
+      </Header>{" "}
+      <Header style={{ display: "inline" }} color={brightBlue}>
+        {"Kids Workshop - 2:00 PM to 3:00 PM"}
+      </Header>
+      <Header
+        color={brightBlue}
+      >{`Adults Workshop - 3:15 PM to 4:45 PM`}</Header>
+    </div>
+    <Divider style={{ marginBottom: "20px", marginTop: "14px" }} />
     <Header fontSize="24px">Adults Software Engineering (Workshop)</Header>
     <Divider style={{ marginBottom: "20px", marginTop: "14px" }} />
     <div style={{ fontSize: "20px", marginBottom: "10px" }}>
@@ -50,6 +71,10 @@ export const WorkshopsPage: React.FC = () => (
         </Grid>
       </Grid>
       <div style={{ textAlign: "center" }}>{`And so much more!`}</div>
+      <Header style={{ textAlign: "center" }}>
+        **The only things you'll need to bring with you are a laptop and a way
+        to keep notes.**
+      </Header>
     </ParagraphText>
   </Container>
 );
