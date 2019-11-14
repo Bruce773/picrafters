@@ -8,8 +8,12 @@ import Select from "@material-ui/core/Select";
 import axios from "axios";
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { brightBlue } from "../colors";
-import { Header, Link } from "../GlobalComponents";
-import { StyledInput, StyledMultiLineInput } from "./elements";
+import {
+  Header,
+  Link,
+  StyledInput,
+  StyledMultiLineInput
+} from "../GlobalComponents";
 import { MessageSnackBar } from "./MessageSnackBar";
 
 interface FormFieldsTypes {
@@ -68,7 +72,6 @@ export const RegisterPage: React.FC = () => {
         resetFormFields();
       })
       .catch(error => {
-        console.log(error);
         if (`${error}`.includes("400")) setStatus(400);
       });
   };

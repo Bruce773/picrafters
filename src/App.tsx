@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ScrollToTop from "react-router-scroll-top";
 import styled from "styled-components";
 import { AboutPage } from "./AboutPage";
+import { ContactUsPage } from "./ContactUsPage";
 import { Footer } from "./Footer";
 import { HomePage } from "./HomePage";
 import { Navbar } from "./Navbar";
@@ -25,6 +26,7 @@ const App: React.FC = () => (
           <Route path="/about" render={() => <AboutPage />} />
           <Route path="/workshops" render={() => <WorkshopsPage />} />
           <Route path="/register" render={() => <RegisterPage />} />
+          <Route path="/contact-us" render={() => <ContactUsPage />} />
         </Switch>
       </MainPageWrapper>
       <Footer />

@@ -1,6 +1,6 @@
-import { Grid } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
 import Divider from "@material-ui/core/Divider";
+import Grid from "@material-ui/core/Grid";
 import React from "react";
 import { brightBlue } from "../colors";
 import { Header, Image, ParagraphText } from "../GlobalComponents";
@@ -65,7 +65,7 @@ export const WorkshopsPage: React.FC = () => (
             <li>
               A working knowledge of
               <br />
-              designing algorithms
+              algorithmic design
             </li>
           </ul>
         </Grid>

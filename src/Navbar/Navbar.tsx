@@ -7,15 +7,15 @@ import MenuIcon from "@material-ui/icons/Menu";
 import React, { useState } from "react";
 import { brightBlue } from "../colors";
 import { Link } from "../GlobalComponents";
-import { mobileLg } from "../Utils";
+import { mobileLg, StandardizeUrlString } from "../Utils";
 import { NavMenu } from "./NavMenu";
 
-const navItems = ["About", "Workshops", "Register"];
+const navItems = ["About", "Workshops", "Register", "Contact Us"];
 
 const NavLinks: React.FC = () => (
   <>
     {navItems.map((itemName: string) => (
-      <Link to={`/${itemName.toLowerCase()}`}>
+      <Link to={`/${StandardizeUrlString(itemName)}`}>
         <Button style={{ color: brightBlue }}>{itemName}</Button>
       </Link>
     ))}

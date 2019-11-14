@@ -2,6 +2,7 @@ import Button from "@material-ui/core/Button";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import React, { Dispatch, SetStateAction } from "react";
 import { brightBlue } from "../colors";
+import { StandardizeUrlString } from "../Utils";
 import { MenuWrapper, StyledNavMenuLink } from "./elements";
 
 export const NavMenu: React.FC<{
@@ -17,7 +18,7 @@ export const NavMenu: React.FC<{
       {navItems.map((itemName: string) => (
         <StyledNavMenuLink
           onClick={() => setShow(false)}
-          to={`/${itemName.toLowerCase()}`}
+          to={`/${StandardizeUrlString(itemName)}`}
         >
           <Button style={{ color: brightBlue, width: "100%" }}>
             {itemName}
