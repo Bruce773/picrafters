@@ -34,6 +34,54 @@ export const WorkshopsPage: React.FC = () => (
         color={brightBlue}
       >{`Adults Workshop - 3:15 PM to 4:45 PM`}</Header>
     </div>
+    {/* --------------Kids Workshop-------------- */}
+    <Divider style={{ marginBottom: "20px", marginTop: "14px" }} />
+    <Header fontSize="24px">Kids Robotics (Workshop)</Header>
+    <Divider style={{ marginBottom: "20px", marginTop: "14px" }} />
+    <div style={{ fontSize: "20px", marginBottom: "10px" }}>
+      <Header style={{ display: "inline" }}>Ages: </Header>{" "}
+      <Header style={{ display: "inline" }} color={brightBlue}>
+        10-14
+      </Header>
+    </div>
+    <ParagraphText>{`In this exciting and creative workshop, kids will explore the world of robotics while also learning the basics of coding and circuit design. We'll use several fun tools designed for kids to learn electronics by the industries leading brands. Such as Little Bits, mBot, and Ozobots. Then, kids will put their imaginations to the test by building and racing their own robots 🤖 from scratch!
+    
+    Some of the skills kids will learn are:`}</ParagraphText>
+    <ParagraphText>
+      <Grid container>
+        <Grid item xs={12} md={6}>
+          <ul>
+            <li>The basics of how electronic circuits work</li>
+            <li>How to build their own circuits using Little Bits</li>
+            <li>
+              How to build circuits using breadboarding one of the most popular
+              tools for circuit prototype design
+            </li>
+          </ul>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <ul>
+            <li>The basics of computer programming using Scratch</li>
+            <li>
+              The basics of computer programming using the Arduino language
+              (C++)
+            </li>
+            <li>
+              How to build and program robots using the Arduino board and
+              language
+            </li>
+          </ul>
+        </Grid>
+      </Grid>
+      <div style={{ textAlign: "center" }}>{`And so much more!`}</div>
+      <Header style={{ textAlign: "center" }}>
+        **No prior coding or electronic experience needed. The only thing they
+        should bring is whatever helps them take "notes". This can be a blank
+        page and some coloured markers... Anything that will help them remember
+        what we talk about in class **
+      </Header>
+    </ParagraphText>
+    {/* --------------Adults Workshop-------------- */}
     <Divider style={{ marginBottom: "20px", marginTop: "14px" }} />
     <Header fontSize="24px">Adults Software Engineering (Workshop)</Header>
     <Divider style={{ marginBottom: "20px", marginTop: "14px" }} />
