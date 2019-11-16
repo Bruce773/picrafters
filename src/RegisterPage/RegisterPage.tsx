@@ -14,6 +14,7 @@ import {
   StyledInput,
   StyledMultiLineInput
 } from "../GlobalComponents";
+import { StandardizeUrlString } from "../Utils";
 import { MessageSnackBar } from "./MessageSnackBar";
 
 interface FormFieldsTypes {
@@ -28,7 +29,11 @@ const SeeMoreInfoSection: React.FC<{ workShopName: string }> = ({
 }) => (
   <Header style={{ marginTop: "24px", fontSize: "20px" }}>
     Click{" "}
-    <Link target="_blank" to="/workshops" style={{ color: brightBlue }}>
+    <Link
+      target="_blank"
+      to={`/workshops#${StandardizeUrlString(workShopName)}-workshop`}
+      style={{ color: brightBlue }}
+    >
       HERE
     </Link>{" "}
     to see more information about the {workShopName} Workshop
@@ -54,9 +59,12 @@ export const RegisterPage: React.FC = () => {
   const [status, setStatus] = useState(0);
 
   const resetFormFields = () => {
-    [setName, setEmail, setClassType, setQuestions].forEach(
-      (item: (arg0: string) => void) => item("")
-    );
+    [
+      setName,
+      setEmail,
+      setClassType,
+      setQuestions
+    ].forEach((item: (arg0: string) => void) => item(""));
   };
 
   const submitFormDataToFormSpree = () => {
