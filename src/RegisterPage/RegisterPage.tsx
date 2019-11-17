@@ -14,8 +14,8 @@ import {
   StyledInput,
   StyledMultiLineInput
 } from "../GlobalComponents";
-import { StandardizeUrlString } from "../Utils";
 import { MessageSnackBar } from "./MessageSnackBar";
+import { SeeMoreInfoSection } from "./SeeMoreInfoSection";
 
 interface FormFieldsTypes {
   updateValue: Dispatch<SetStateAction<string>>;
@@ -23,22 +23,6 @@ interface FormFieldsTypes {
   label: string;
   style?: React.CSSProperties;
 }
-
-const SeeMoreInfoSection: React.FC<{ workShopName: string }> = ({
-  workShopName
-}) => (
-  <Header style={{ marginTop: "24px", fontSize: "20px" }}>
-    Click{" "}
-    <Link
-      target="_blank"
-      to={`/workshops#${StandardizeUrlString(workShopName)}-workshop`}
-      style={{ color: brightBlue }}
-    >
-      HERE
-    </Link>{" "}
-    to see more information about the {workShopName} Workshop
-  </Header>
-);
 
 const MoreInfo: React.FC<{ classType: string }> = ({ classType }) => {
   if (classType.includes("Kids")) {

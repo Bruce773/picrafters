@@ -57,6 +57,12 @@ export const WorkshopsPage: React.FC = () => {
         <Header style={{ display: "inline" }} color={brightBlue}>
           10-14
         </Header>
+        <br />
+        <br />
+        <Header style={{ display: "inline" }}>Price (6 months): </Header>{" "}
+        <Header style={{ display: "inline" }} color={brightBlue}>
+          $100
+        </Header>
       </div>
       <ParagraphText>{`In this exciting and creative workshop, kids will explore the world of robotics while also learning the basics of coding and circuit design. We'll use several fun tools designed for kids to learn electronics by the industries leading brands. Such as Little Bits, mBot, and Ozobots. Then, kids will put their imaginations to the test by building and racing their own robots 🤖 from scratch!
     
@@ -104,6 +110,12 @@ export const WorkshopsPage: React.FC = () => {
         <Header style={{ display: "inline" }}>Ages: </Header>{" "}
         <Header style={{ display: "inline" }} color={brightBlue}>
           15+
+        </Header>
+        <br />
+        <br />
+        <Header style={{ display: "inline" }}>Price (6 months): </Header>{" "}
+        <Header style={{ display: "inline" }} color={brightBlue}>
+          $200
         </Header>
       </div>
       <ParagraphText>{`In this exciting and fun paced workshop, you'll learn all the skills you need to start developing software with web technologies. We'll teach you the basics of coding in the JavaScript language along with some of the high level concepts and principles of designing and producing software. 
