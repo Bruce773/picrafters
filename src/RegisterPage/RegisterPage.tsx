@@ -12,7 +12,8 @@ import {
   Header,
   Link,
   StyledInput,
-  StyledMultiLineInput
+  StyledMultiLineInput,
+  ParagraphText
 } from "../GlobalComponents";
 import { MessageSnackBar } from "./MessageSnackBar";
 import { SeeMoreInfoSection } from "./SeeMoreInfoSection";
@@ -88,6 +89,16 @@ export const RegisterPage: React.FC = () => {
         <Header style={{ fontSize: "35px", marginTop: "25px" }}>
           Register for Pi Crafters
         </Header>
+        <div
+          style={{ fontSize: "20px", marginBottom: "10px", marginTop: "10px" }}
+        >
+          <Header style={{ display: "inline" }}>
+            Weekend workshops starting date:{" "}
+          </Header>{" "}
+          <Header style={{ display: "inline" }} color={brightBlue}>
+            January 11th, 2020
+          </Header>
+        </div>
         <Divider style={{ marginTop: "25px", marginBottom: "30px" }} />
         {formFields.map(({ label, value, updateValue, style }) => (
           <div style={style}>

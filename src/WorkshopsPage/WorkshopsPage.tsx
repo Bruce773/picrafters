@@ -27,6 +27,14 @@ export const WorkshopsPage: React.FC = () => {
         size={300}
       />
       <Divider style={{ marginBottom: "20px", marginTop: "14px" }} />
+      <div
+        style={{ fontSize: "24px", marginBottom: "10px", marginTop: "10px" }}
+      >
+        <Header style={{ display: "inline" }}>Starting date: </Header>{" "}
+        <Header style={{ display: "inline" }} color={brightBlue}>
+          January 11th, 2020
+        </Header>
+      </div>
       <div style={{ lineHeight: "35px" }}>
         <Header fontSize="24px">Location and times of both workshops</Header>
         <ParagraphText>{`Both workshops will be held on the second floor of The Stourbridge Project building located in Honesdale, PA.`}</ParagraphText>
