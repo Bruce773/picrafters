@@ -175,8 +175,8 @@ export const WorkshopsPage: React.FC = () => {
         </Grid>
         <div style={{ textAlign: "center" }}>{`And so much more!`}</div>
         <Header style={{ textAlign: "center" }}>
-          **The only things you'll need to bring with you are a laptop and a way
-          to keep notes.**
+          **The only things you'll need to bring with you are a laptop
+          (preferably a mac or linux machine) and a way to keep notes.**
         </Header>
       </ParagraphText>
     </Container>
