@@ -1,9 +1,10 @@
+import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
 import React, { useEffect } from "react";
-import { brightBlue } from "../colors";
-import { Header, Image, ParagraphText } from "../GlobalComponents";
+import { brightBlue, gold, lightGrey } from "../colors";
+import { Header, Image, Link, ParagraphText } from "../GlobalComponents";
 
 export const WorkshopsPage: React.FC = () => {
   const hash = window.location.hash;
@@ -27,6 +28,8 @@ export const WorkshopsPage: React.FC = () => {
         size={300}
       />
       <Divider style={{ marginBottom: "20px", marginTop: "14px" }} />
+      <Header fontSize="24px">Info</Header>
+      <Divider style={{ marginBottom: "20px", marginTop: "14px" }} />
       <div
         style={{ fontSize: "24px", marginBottom: "10px", marginTop: "10px" }}
       >
@@ -35,9 +38,10 @@ export const WorkshopsPage: React.FC = () => {
           January 11th, 2020
         </Header>
       </div>
-      <div style={{ lineHeight: "35px" }}>
-        <Header fontSize="24px">Location and times of both workshops</Header>
-        <ParagraphText>{`Both workshops will be held on the second floor of The Stourbridge Project building located in Honesdale, PA.`}</ParagraphText>
+      <div style={{ lineHeight: "45px" }}>
+        <ParagraphText
+          style={{ textAlign: "center" }}
+        >{`Both workshops will be held on the second floor of The Stourbridge Project building located in Honesdale, PA.`}</ParagraphText>
         <Header fontSize="24px" style={{ display: "inline" }}>
           Location:{" "}
         </Header>{" "}
@@ -54,6 +58,22 @@ export const WorkshopsPage: React.FC = () => {
         <Header
           color={brightBlue}
         >{`Adults Workshop - 3:15 PM to 4:45 PM`}</Header>
+        <div style={{ marginTop: "10px", marginBottom: "30px" }}>
+          <Header fontSize="30px">Register for either workshop</Header>
+          <Link to="/register">
+            <Button
+              style={{
+                backgroundColor: lightGrey,
+                color: gold,
+                fontSize: "20px",
+                marginTop: "10px"
+              }}
+              variant="contained"
+            >
+              Register
+            </Button>
+          </Link>
+        </div>
       </div>
       {/* --------------Kids Workshop-------------- */}
       <div id="kids-workshop" />
@@ -72,7 +92,7 @@ export const WorkshopsPage: React.FC = () => {
           $100
         </Header>
       </div>
-      <ParagraphText>{`In this exciting and creative workshop, kids will explore the world of robotics while also learning the basics of coding and circuit design. We'll use several fun tools designed for kids to learn electronics by the industries leading brands. Such as Little Bits, mBot, and Ozobots. Then, kids will put their imaginations to the test by building and racing their own robots 🤖 from scratch!
+      <ParagraphText>{`In this exciting and creative workshop, kids will explore the world of robotics while also learning the basics of coding and circuit design. We'll use several fun tools designed by the industries leading brands to help kids learn electronics. Some of these tools include Little Bits, mBot, and Ozobots. After a few weeks of learning the basics, kids will put their imaginations to the test by building their own robots 🤖 from scratch then racing them!
     
     Some of the skills kids will learn are:`}</ParagraphText>
       <ParagraphText>

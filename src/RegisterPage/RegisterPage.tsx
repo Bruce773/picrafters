@@ -13,7 +13,6 @@ import {
   Link,
   StyledInput,
   StyledMultiLineInput,
-  ParagraphText
 } from "../GlobalComponents";
 import { MessageSnackBar } from "./MessageSnackBar";
 import { SeeMoreInfoSection } from "./SeeMoreInfoSection";
