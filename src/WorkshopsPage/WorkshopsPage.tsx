@@ -14,7 +14,6 @@ export const WorkshopsPage: React.FC = () => {
 
   useEffect(() => {
     if (hash && elementWithMatchingId) {
-      console.log(elementWithMatchingId);
       elementWithMatchingId.scrollIntoView({ behavior: "smooth" });
     }
   }, [elementWithMatchingId]);
