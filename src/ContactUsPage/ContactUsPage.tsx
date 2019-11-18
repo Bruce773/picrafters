@@ -47,9 +47,12 @@ export const ContactUsPage: React.FC = () => {
           validationSchema={QuestionSchema}
           onSubmit={(values, { resetForm }) => {
             setIsSending(true);
+            const { name, email, questions } = values;
             axios
-              .post("https://formspree.io/mjvvybwo", {
-                values
+              .post("https://formspree.io/mrggjzbb", {
+                name,
+                email,
+                questions
               })
               .then(() => {
                 resetForm();
