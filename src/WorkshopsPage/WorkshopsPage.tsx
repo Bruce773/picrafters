@@ -176,7 +176,7 @@ export const WorkshopsPage: React.FC = () => {
         <div style={{ textAlign: "center" }}>{`And so much more!`}</div>
         <Header style={{ textAlign: "center" }}>
           **The only things you'll need to bring with you are a laptop
-          (preferably a mac or linux machine) and a way to keep notes.**
+          (preferably a Mac or Linux machine) and a way to keep notes.**
         </Header>
       </ParagraphText>
     </Container>
