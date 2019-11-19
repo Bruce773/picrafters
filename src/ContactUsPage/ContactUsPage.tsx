@@ -3,7 +3,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import Container from "@material-ui/core/Container";
 import Divider from "@material-ui/core/Divider";
 import axios from "axios";
-import { Field, FieldProps, Form, Formik } from "formik";
+import { Field, Formik } from "formik";
 import React, { useState } from "react";
 import styled from "styled-components";
 import * as Yup from "yup";
