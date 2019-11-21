@@ -5,6 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import React, { useEffect } from "react";
 import { brightBlue, gold, lightGrey } from "../colors";
 import { Header, Image, Link, ParagraphText } from "../GlobalComponents";
+import { StyledLink } from "./elements";
 
 export const WorkshopsPage: React.FC = () => {
   const hash = window.location.hash;
@@ -90,6 +91,25 @@ export const WorkshopsPage: React.FC = () => {
         <Header style={{ display: "inline" }} color={brightBlue}>
           $100
         </Header>
+        <br />
+        <br />
+        <Header>
+          It's also recommend that they have an{" "}
+          <StyledLink
+            target="_blank"
+            href="https://www.amazon.com/Development-Microcontroller-ATmega328-ATMEGA16U2-Original/dp/B07R1H4BKK/ref=sr_1_14?keywords=arduino+uno+kit&qid=1574370210&sr=8-14"
+          >
+            Arduino Board ($15.98)
+          </StyledLink>{" "}
+          and a{" "}
+          <StyledLink
+            target="_blank"
+            href="https://www.amazon.com/LAFVIN-Electronic-Breadboard-Potentiometer-Compatible/dp/B076KGYJH2/ref=sr_1_5?keywords=breadboarding+kit&qid=1574370254&sr=8-5"
+          >
+            Breadboarding Kit ($11.98)
+          </StyledLink>
+          .
+        </Header>
       </div>
       <ParagraphText>{`In this exciting and creative workshop, kids will explore the world of robotics while also learning the basics of coding and circuit design. We'll use several fun tools designed by the industries leading brands to help kids learn electronics. Some of these tools include Little Bits, mBot, and Ozobots. After a few weeks of learning the basics, kids will put their imaginations to the test by building their own robots 🤖 from scratch then racing them!
     
@@ -122,10 +142,10 @@ export const WorkshopsPage: React.FC = () => {
         </Grid>
         <div style={{ textAlign: "center" }}>{`And so much more!`}</div>
         <Header style={{ textAlign: "center" }}>
-          **No prior coding or electronic experience needed. The only thing they
-          should bring is whatever helps them take "notes". This can be a blank
-          page and some coloured markers... Anything that will help them
-          remember what we talk about in class **
+          **No prior coding or electronic experience needed. They should bring
+          something to help them take "notes". This can be a blank page and some
+          coloured markers... Anything that will help them remember what we talk
+          about in class**
         </Header>
       </ParagraphText>
       {/* --------------Adults Workshop-------------- */}
