@@ -8,7 +8,9 @@ const InstructorData = [
   {
     name: "Bruce Johnson",
     imageUrl: "bruce_headshot_square.jpg",
-    bio: `Hello! My name is Bruce Johnson. I'm currently a Software Engineer working for Yoga International in Honesdale, PA. I started coding when I was 12 years old using the Python language. After a few years of coding, I picked up the Arduino language and started working with electronics and robotics. Then, in 2015, I started a company called Pi Crafters to help kids and adults enjoy learning computer programing. I'm currently working on a bachelor's degree in Computer Science and plan to earn my master's degree in software engineering. And, I recently graduated from the Hack React Full Stack Web Development Immersive program which specializes in advanced software engineering skills.`
+    bio: `Hello! My name is Bruce Johnson. I'm currently a Software Engineer working for Yoga International in Honesdale, PA. I started coding when I was 12 years old using the Python language. After a few years of coding, I picked up the Arduino language and started working with electronics and robotics. Then, in 2015, I started a company called Pi Crafters to help kids and adults enjoy learning computer programing. I'm currently working on a bachelor's degree in Computer Science and plan to earn my master's degree in software engineering. And, I recently graduated from the Hack React Full Stack Web Development Immersive program which specializes in advanced software engineering skills.
+    
+    When I'm not coding, I love playing music with several local bands in downtown Honesdale. I will usually play upright bass, fiddle, guitar, piano, or mandolin. I also enjoy karate and earned my black belt in the spring of 2018. I was in the Boy Scouts for 8 years and recently took up running as a hobby during the summer months.`
   },
   {
     name: "Joseph Spinosa",
