@@ -42,6 +42,11 @@ export const WorkshopsPage: React.FC = () => {
         <ParagraphText
           style={{ textAlign: "center" }}
         >{`Both workshops will be held on the second floor of The Stourbridge Project building located in Honesdale, PA.`}</ParagraphText>
+        <ParagraphText style={{ textAlign: "center" }}>
+          {
+            "They are both held on a bi-weekly basis starting on January 11th, 2020."
+          }
+        </ParagraphText>
         <Header fontSize="24px" style={{ display: "inline" }}>
           Location:{" "}
         </Header>{" "}
@@ -111,7 +116,7 @@ export const WorkshopsPage: React.FC = () => {
           .
         </Header>
       </div>
-      <ParagraphText>{`In this exciting and creative workshop, kids will explore the world of robotics while also learning the basics of coding and circuit design. We'll use several fun tools designed by the industries leading brands to help kids learn electronics. Some of these tools include Little Bits, mBot, and Ozobots. After a few weeks of learning the basics, kids will put their imaginations to the test by building their own robots 🤖 from scratch then racing them!
+      <ParagraphText>{`In this exciting and creative workshop, kids will explore the world of robotics while also learning the basics of coding and circuit design. We'll use several fun tools designed by the industrie's leading brands to help kids learn electronics. Some of these tools include Little Bits, mBot, and Ozobots. After a few weeks of learning the basics, kids will put their imaginations to the test by building their own robots 🤖 from scratch then racing them!
     
     Some of the skills kids will learn are:`}</ParagraphText>
       <ParagraphText>
