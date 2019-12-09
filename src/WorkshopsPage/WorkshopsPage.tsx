@@ -5,9 +5,11 @@ import Grid from "@material-ui/core/Grid";
 import React, { useEffect } from "react";
 import { brightBlue, gold, lightGrey } from "../colors";
 import { Header, Image, Link, ParagraphText } from "../GlobalComponents";
+import { useContentfulData } from "../Utils";
 import { StyledLink } from "./elements";
 
 export const WorkshopsPage: React.FC = () => {
+  useContentfulData();
   const hash = window.location.hash;
   const elementWithMatchingId = document.getElementById(
     hash.slice(1, hash.length)
