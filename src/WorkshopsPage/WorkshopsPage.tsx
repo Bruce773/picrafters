@@ -40,13 +40,17 @@ export const WorkshopsPage: React.FC = () => {
       </div>
       <div style={{ lineHeight: "45px" }}>
         <ParagraphText
-          style={{ textAlign: "center" }}
-        >{`Both workshops will be held on the second floor of The Stourbridge Project building located in Honesdale, PA.`}</ParagraphText>
-        <ParagraphText style={{ textAlign: "center" }}>
-          {
-            "They are both held on a bi-weekly basis starting on January 11th, 2020."
-          }
-        </ParagraphText>
+          style={{ textAlign: "center", margin: "20px 0px" }}
+        >{`Both workshops will be held on the second floor of The Stourbridge Project building located in Honesdale, PA every other Saturday on a bi-weekly basis.`}</ParagraphText>
+        {/* <ParagraphText
+          style={{
+            textAlign: "center",
+            textDecoration: "underline",
+            margin: "20px 0px"
+          }}
+        >
+          {`Both are held every other Saturday on a bi-weekly basis starting on January 11th, 2020`}
+        </ParagraphText> */}
         <Header fontSize="24px" style={{ display: "inline" }}>
           Location:{" "}
         </Header>{" "}
