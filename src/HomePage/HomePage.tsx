@@ -37,7 +37,7 @@ export const HomePage: React.FC = () => (
       <Header
         style={{
           fontSize: "2.5vh",
-          lineHeight: "24px",
+          lineHeight: "35px",
           letterSpacing: "3px",
           marginBottom: "15px",
           fontWeight: 400
