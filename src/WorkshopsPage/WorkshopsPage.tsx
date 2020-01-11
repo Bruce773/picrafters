@@ -103,7 +103,7 @@ export const WorkshopsPage: React.FC = () => {
         <br />
         <br />
         <Header>
-          It's also recommend that they have an{" "}
+          It's also recommended that they have an{" "}
           <StyledLink
             target="_blank"
             href="https://www.amazon.com/Development-Microcontroller-ATmega328-ATMEGA16U2-Original/dp/B07R1H4BKK/ref=sr_1_14?keywords=arduino+uno+kit&qid=1574370210&sr=8-14"
