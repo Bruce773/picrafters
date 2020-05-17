@@ -33,6 +33,7 @@ export const Navbar: React.FC = () => {
           backgroundColor: "white",
           padding: "0px",
         }}
+        title="Pi Crafters"
       >
         <Toolbar>
           <Link to="/">
