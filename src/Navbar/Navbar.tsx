@@ -31,7 +31,7 @@ export const Navbar: React.FC = () => {
       <AppBar
         style={{
           backgroundColor: "white",
-          padding: "0px"
+          padding: "0px",
         }}
       >
         <Toolbar>
@@ -40,8 +40,8 @@ export const Navbar: React.FC = () => {
               <img
                 style={{
                   maxHeight: "58px",
-                  minHeight: "5vw",
-                  borderRadius: "20px"
+                  minHeight: "20px",
+                  borderRadius: "20px",
                 }}
                 alt="Logo"
                 src="https://ik.imagekit.io/3aek1kxt2/pi-crafters/Pi_Crafters_Logo.png?tr=w-200"
