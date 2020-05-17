@@ -12,6 +12,9 @@ export const StyledTextField = styled(TextField)`
       padding: 12px;
       color: ${brightBlue};
     }
+    .MuiInput-underline:before {
+      border-bottom: none;
+    }
   }
   width: inherit;
   margin-right: auto;
@@ -28,9 +31,6 @@ export const StyledMultiLineTextField = styled(StyledTextField)`
     textarea {
       padding: 12px;
       color: ${brightBlue};
-    }
-    .MuiInput-underline:after {
-      display: none;
     }
   }
 `;

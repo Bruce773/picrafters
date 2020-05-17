@@ -18,9 +18,15 @@ interface HandleSubmitParams {
   name: string;
   email: string;
   questions: string;
+  resetForm(): void;
 }
 
-type HandleSubmit = ({ email, name, questions }: HandleSubmitParams) => void;
+type HandleSubmit = ({
+  email,
+  name,
+  questions,
+  resetForm,
+}: HandleSubmitParams) => void;
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required("You must enter your name"),
@@ -37,7 +43,12 @@ export const ContactUsPage: React.FC = () => {
   const [isSending, setIsSending] = useState(false);
   const [showSnackbar, setShowSnackbar] = useState(false);
 
-  const handleSubmit: HandleSubmit = ({ name, email, questions }) => {
+  const handleSubmit: HandleSubmit = ({
+    name,
+    email,
+    questions,
+    resetForm,
+  }) => {
     setIsSending(true);
     axios
       .post("https://formspree.io/mrggjzbb", {
@@ -46,9 +57,9 @@ export const ContactUsPage: React.FC = () => {
         questions,
       })
       .then(() => {
-        // resetForm();
         setIsSending(false);
         setShowSnackbar(true);
+        resetForm();
       })
       .catch(error => {
         if (`${error}`.includes("400")) {
@@ -64,6 +75,7 @@ export const ContactUsPage: React.FC = () => {
     values: { name, email, questions },
     errors,
     touched,
+    resetForm,
   } = useFormik({
     initialValues: {
       name: "",
@@ -116,7 +128,7 @@ export const ContactUsPage: React.FC = () => {
             !errors.email &&
             !errors.name &&
             !errors.questions &&
-            handleSubmit({ name, email, questions })
+            handleSubmit({ name, email, questions, resetForm })
           }
         >
           <CircularProgress
