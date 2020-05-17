@@ -5,11 +5,12 @@ import { Header } from "../GlobalComponents";
 export const MessageSentSnackbar: React.FC<{
   submitError: boolean;
   showSnackbar: boolean;
-}> = ({ submitError, showSnackbar }) => (
+  message?: string;
+}> = ({ submitError, showSnackbar, message }) => (
   <Snackbar
     anchorOrigin={{
       vertical: "bottom",
-      horizontal: "left"
+      horizontal: "left",
     }}
     open={showSnackbar}
     message={
@@ -20,8 +21,9 @@ export const MessageSentSnackbar: React.FC<{
         </Header>
       ) : (
         <Header>
-          Your message has been sent! ✉️ You should recieve an answer within a
-          few hours.
+          {message
+            ? message
+            : `Your message has been sent! ✉️ You should recieve an answer within a few hours.`}
         </Header>
       )
     }
