@@ -1,27 +1,29 @@
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import Divider from "@material-ui/core/Divider";
-import FormControl from "@material-ui/core/FormControl";
-import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import axios from "axios";
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { useState } from "react";
 import { brightBlue } from "../colors";
 import {
   Header,
-  Link,
-  StyledInput,
-  StyledMultiLineInput,
+  StyledTextField,
+  StyledMultiLineTextField,
+  Error,
 } from "../GlobalComponents";
 import { MessageSnackBar } from "./MessageSnackBar";
 import { SeeMoreInfoSection } from "./SeeMoreInfoSection";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
-interface FormFieldsTypes {
-  updateValue: Dispatch<SetStateAction<string>>;
-  value: string;
-  label: string;
-  style?: React.CSSProperties;
+interface HandleSubmitArgs {
+  name: string;
+  email: string;
+  questions: string;
+  classType: string;
+  resetForm(): void;
 }
 
 const MoreInfo: React.FC<{ classType: string }> = ({ classType }) => {
@@ -34,121 +36,154 @@ const MoreInfo: React.FC<{ classType: string }> = ({ classType }) => {
   }
 };
 
+const validationSchema = Yup.object().shape({
+  name: Yup.string().required("You must enter your name"),
+  email: Yup.string()
+    .email("Invalid email address")
+    .required("You must enter an email address"),
+  questions: Yup.string()
+    .min(2, "Too Short!")
+    .required("You must enter your question"),
+});
+
 export const RegisterPage: React.FC = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [classType, setClassType] = useState("");
-  const [constantClassType, setConstantClassType] = useState("");
-  const [questions, setQuestions] = useState("");
-  const [status, setStatus] = useState(0);
+  const [classType, setClassType] = useState("placeholder");
+  const [submitError, setSubmitError] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [showSnackbar, setShowSnackbar] = useState(false);
 
-  const resetFormFields = () => {
-    [
-      setName,
-      setEmail,
-      setClassType,
-      setQuestions
-    ].forEach((item: (arg0: string) => void) => item(""));
-  };
-
-  const submitFormDataToFormSpree = () => {
+  const handleSubmit = ({
+    name,
+    email,
+    questions,
+    classType,
+    resetForm,
+  }: HandleSubmitArgs) => {
+    setIsSending(true);
     axios
       .post("https://formspree.io/mjvvybwo", {
         name,
         email,
         classType,
-        questions
+        questions,
       })
-      .then(({ status }) => {
-        setStatus(status);
-        resetFormFields();
+      .then(() => {
+        setIsSending(false);
+        setShowSnackbar(true);
+        resetForm();
       })
       .catch(error => {
-        if (`${error}`.includes("400")) setStatus(400);
+        if (`${error}`.includes("400")) {
+          setSubmitError(true);
+          setShowSnackbar(true);
+        }
       });
   };
 
-  const formFields: FormFieldsTypes[] = [
-    {
-      label: `Student's Name`,
-      value: name,
-      updateValue: setName
+  const {
+    handleChange,
+    handleBlur,
+    values: { name, email, questions },
+    errors,
+    touched,
+    resetForm,
+  } = useFormik({
+    initialValues: {
+      name: "",
+      email: "",
+      questions: "",
     },
-    {
-      label: `Email`,
-      value: email,
-      updateValue: setEmail,
-      style: { margin: "atuo", marginTop: "20px" }
-    }
-  ];
+    validationSchema,
+    onSubmit: () => undefined,
+  });
 
   return (
-    <>
-      <Container maxWidth="md" style={{ textAlign: "center", margin: "auto" }}>
-        <Header style={{ fontSize: "35px", marginTop: "25px" }}>
-          Register for Pi Crafters
+    <Container maxWidth="sm">
+      <Header style={{ fontSize: "35px", marginTop: "25px" }}>
+        Register for Pi Crafters
+      </Header>
+      <div
+        style={{ fontSize: "20px", marginBottom: "10px", marginTop: "10px" }}
+      >
+        <Header style={{ display: "inline" }}>
+          Weekend workshops starting date:{" "}
+        </Header>{" "}
+        <Header style={{ display: "inline" }} color={brightBlue}>
+          January 11th, 2020
         </Header>
-        <div
-          style={{ fontSize: "20px", marginBottom: "10px", marginTop: "10px" }}
-        >
-          <Header style={{ display: "inline" }}>
-            Weekend workshops starting date:{" "}
-          </Header>{" "}
-          <Header style={{ display: "inline" }} color={brightBlue}>
-            January 11th, 2020
-          </Header>
-        </div>
-        <Divider style={{ marginTop: "25px", marginBottom: "30px" }} />
-        {formFields.map(({ label, value, updateValue, style }) => (
-          <div style={style}>
-            <StyledInput
-              onChange={({ target: { value } }) => updateValue(value)}
-              required
-              value={value}
-              placeholder={label}
-              disableUnderline
-            />
-          </div>
-        ))}
-        <FormControl style={{ width: "330px", marginTop: "20px" }}>
-          <InputLabel style={{ fontSize: "24px" }}>Select a Program</InputLabel>
-          <Select
-            required
-            onChange={({ target: { value } }) => {
-              setClassType(`${value}`);
-              setConstantClassType(`${value}`);
-            }}
-            value={classType}
-            style={{ fontSize: "20px", marginTop: "25px", color: brightBlue }}
-          >
-            <MenuItem value="Kids Robotics (Workshop)">
-              Kids Robotics (Workshop)
-            </MenuItem>
-            <MenuItem value="Adults Software Engineering (Workshop)">
-              Adults Software Engineering (Workshop)
-            </MenuItem>
-          </Select>
-        </FormControl>
-        <MoreInfo classType={classType} />
-        <StyledMultiLineInput
-          onChange={({ target: { value } }) => setQuestions(value)}
-          value={questions}
-          placeholder="Questions or comments"
-          multiline
-          disableUnderline
-          rows={4}
-        />
-      </Container>
-      <Button
-        onClick={() => {
-          submitFormDataToFormSpree();
+      </div>
+      <Divider style={{ marginTop: "25px", marginBottom: "30px" }} />
+      <StyledTextField
+        variant="standard"
+        name="name"
+        type="name"
+        placeholder={`Student's Name`}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        value={name}
+      />
+      <Error>{errors.name && touched.name && errors.name}</Error>
+      <StyledTextField
+        name="email"
+        placeholder="Email"
+        onChange={handleChange}
+        onBlur={handleBlur}
+        value={email}
+      />
+      <Error>{errors.email && touched.email && errors.email}</Error>
+      <Select
+        onChange={({ target: { value } }) => {
+          setClassType(`${value}`);
         }}
+        value={classType}
+        style={{ fontSize: "20px", color: brightBlue }}
+      >
+        <MenuItem disabled value="placeholder">
+          Select a Program
+        </MenuItem>
+        <MenuItem value="Kids Robotics (Workshop)">
+          Kids Robotics (Workshop)
+        </MenuItem>
+        <MenuItem value="Adults Software Engineering (Workshop)">
+          Adults Software Engineering (Workshop)
+        </MenuItem>
+      </Select>
+      <MoreInfo classType={classType} />
+      <StyledMultiLineTextField
+        style={{ marginTop: "20px" }}
+        name="questions"
+        placeholder="Questions or comments"
+        multiline
+        onChange={handleChange}
+        onBlur={handleBlur}
+        value={questions}
+        rows={4}
+      />
+      <Error>{errors.questions && touched.questions && errors.questions}</Error>
+      <Button
         variant="contained"
         style={{ marginTop: "25px", fontSize: "16px" }}
+        onClick={() =>
+          !errors.email &&
+          !errors.name &&
+          !errors.questions &&
+          handleSubmit({ name, email, questions, classType, resetForm })
+        }
       >
-        Register
+        <CircularProgress
+          style={{
+            width: "28px",
+            height: "28px",
+            display: isSending ? "inline" : "none",
+          }}
+        />
+        <div style={{ display: isSending ? "none" : "block" }}>Register</div>
       </Button>
-      <MessageSnackBar status={status} constantClassType={constantClassType} />
-    </>
+      <MessageSnackBar
+        submitError={submitError}
+        showSnackbar={showSnackbar}
+        constantClassType={classType}
+      />
+    </Container>
   );
 };

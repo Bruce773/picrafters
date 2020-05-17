@@ -9,6 +9,7 @@ import { HomePage } from "./HomePage";
 import { Navbar } from "./Navbar";
 import { RegisterPage } from "./RegisterPage";
 import { WorkshopsPage } from "./WorkshopsPage";
+import { SurveyPage } from "./SurveyPage";
 
 const MainPageWrapper = styled.div`
   font-family: "Work Sans", sans-serif;
@@ -27,6 +28,7 @@ const App: React.FC = () => (
           <Route path="/workshops" render={() => <WorkshopsPage />} />
           <Route path="/register" render={() => <RegisterPage />} />
           <Route path="/contact-us" render={() => <ContactUsPage />} />
+          <Route path="/survey" render={() => <SurveyPage />} />
         </Switch>
       </MainPageWrapper>
       <Footer />

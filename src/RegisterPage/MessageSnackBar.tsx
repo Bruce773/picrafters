@@ -1,20 +1,21 @@
-import Snackbar from '@material-ui/core/Snackbar';
-import React from 'react';
-import {Header} from '../GlobalComponents';
+import Snackbar from "@material-ui/core/Snackbar";
+import React from "react";
+import { Header } from "../GlobalComponents";
 
 export const MessageSnackBar: React.FC<{
-  status: number;
+  submitError: boolean;
   constantClassType: string;
-}> = ({status, constantClassType}) => (
+  showSnackbar: boolean;
+}> = ({ constantClassType, showSnackbar, submitError }) => (
   <Snackbar
-    open={status === 200 || status === 400 ? true : false}
+    open={showSnackbar || submitError}
     anchorOrigin={{
-      vertical: 'bottom',
-      horizontal: 'left',
+      vertical: "bottom",
+      horizontal: "left",
     }}
     autoHideDuration={5000}
     message={
-      status === 200 ? (
+      !submitError ? (
         <Header>
           <span role="img" aria-label="party emoji">
             🎉
@@ -23,7 +24,8 @@ export const MessageSnackBar: React.FC<{
         </Header>
       ) : (
         <Header color="red">
-          Error! Please ensure you've filled out every field.
+          Error! Please try again later. If this error persists, please reach
+          out to us via the contact page
         </Header>
       )
     }
