@@ -3,29 +3,33 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import Container from "@material-ui/core/Container";
 import Divider from "@material-ui/core/Divider";
 import axios from "axios";
-import { Field, Formik } from "formik";
+import { useFormik } from "formik";
 import React, { useState } from "react";
-import styled from "styled-components";
 import * as Yup from "yup";
-import { Header, StyledInput, StyledMultiLineInput } from "../GlobalComponents";
+import {
+  Header,
+  StyledTextField,
+  StyledMultiLineTextField,
+  Error,
+} from "../GlobalComponents";
 import { MessageSentSnackbar } from "./MessageSentSnackbar";
 
-const ErrorMessage = styled.div`
-  color: red;
-  font-weight: bold;
-  margin: 10px;
-`;
+interface HandleSubmitParams {
+  name: string;
+  email: string;
+  questions: string;
+}
 
-const QuestionSchema = Yup.object().shape({
-  name: Yup.string()
-    .min(2, "Too Short!")
-    .required("Required"),
+type HandleSubmit = ({ email, name, questions }: HandleSubmitParams) => void;
+
+const validationSchema = Yup.object().shape({
+  name: Yup.string().required("You must enter your name"),
   email: Yup.string()
-    .email("Invalid email")
-    .required("Required"),
+    .email("Invalid email address")
+    .required("You must enter an email address"),
   questions: Yup.string()
     .min(2, "Too Short!")
-    .required("Required")
+    .required("You must enter your question"),
 });
 
 export const ContactUsPage: React.FC = () => {
@@ -33,116 +37,97 @@ export const ContactUsPage: React.FC = () => {
   const [isSending, setIsSending] = useState(false);
   const [showSnackbar, setShowSnackbar] = useState(false);
 
+  const handleSubmit: HandleSubmit = ({ name, email, questions }) => {
+    setIsSending(true);
+    axios
+      .post("https://formspree.io/mrggjzbb", {
+        name,
+        email,
+        questions,
+      })
+      .then(() => {
+        // resetForm();
+        setIsSending(false);
+        setShowSnackbar(true);
+      })
+      .catch(error => {
+        if (`${error}`.includes("400")) {
+          setSubmitError(true);
+          setShowSnackbar(true);
+        }
+      });
+  };
+
+  const {
+    handleChange,
+    handleBlur,
+    values: { name, email, questions },
+    errors,
+    touched,
+  } = useFormik({
+    initialValues: {
+      name: "",
+      email: "",
+      questions: "",
+    },
+    validationSchema,
+    onSubmit: () => undefined,
+  });
+
   return (
     <>
-      <Container maxWidth="md">
+      <Container maxWidth="sm">
         <Header fontSize="35px">Contact Us</Header>
         <Divider style={{ marginBottom: "20px", marginTop: "14px" }} />
-        <Formik
-          initialValues={{
-            email: "",
-            name: "",
-            questions: ""
-          }}
-          validationSchema={QuestionSchema}
-          onSubmit={(values, { resetForm }) => {
-            setIsSending(true);
-            const { name, email, questions } = values;
-            axios
-              .post("https://formspree.io/mrggjzbb", {
-                name,
-                email,
-                questions
-              })
-              .then(() => {
-                resetForm();
-                setIsSending(false);
-                setShowSnackbar(true);
-              })
-              .catch(error => {
-                if (`${error}`.includes("400")) {
-                  setSubmitError(true);
-                  setShowSnackbar(true);
-                }
-              });
-          }}
+        <StyledTextField
+          variant="standard"
+          name="name"
+          type="name"
+          placeholder="Name"
+          onChange={handleChange}
+          onBlur={handleBlur}
+          value={name}
+        />
+        <Error>{errors.name && touched.name && errors.name}</Error>
+        <StyledTextField
+          name="email"
+          placeholder="Email"
+          onChange={handleChange}
+          onBlur={handleBlur}
+          value={email}
+        />
+        <Error>{errors.email && touched.email && errors.email}</Error>
+        <StyledMultiLineTextField
+          name="questions"
+          placeholder="Questions or comments"
+          multiline
+          onChange={handleChange}
+          onBlur={handleBlur}
+          value={questions}
+          rows={4}
+        />
+        <Error>
+          {errors.questions && touched.questions && errors.questions}
+        </Error>
+        <Button
+          variant="contained"
+          style={{ marginTop: "25px", fontSize: "16px" }}
+          onClick={() =>
+            !errors.email &&
+            !errors.name &&
+            !errors.questions &&
+            handleSubmit({ name, email, questions })
+          }
         >
-          {({
-            values,
-            errors,
-            touched,
-            handleChange,
-            handleBlur,
-            handleSubmit
-          }) => (
-            <form onSubmit={handleSubmit}>
-              <Field
-                render={() => (
-                  <StyledInput
-                    name="name"
-                    type="name"
-                    placeholder="Name"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.name}
-                    disableUnderline
-                  />
-                )}
-              />
-              <ErrorMessage>
-                {errors.name && touched.name && errors.name}
-              </ErrorMessage>
-              <Field
-                render={() => (
-                  <StyledInput
-                    name="email"
-                    placeholder="Email"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.email}
-                    disableUnderline
-                  />
-                )}
-              />
-              <ErrorMessage>
-                {errors.email && touched.email && errors.email}
-              </ErrorMessage>
-              <Field
-                render={() => (
-                  <StyledMultiLineInput
-                    name="questions"
-                    placeholder="Questions or comments"
-                    multiline
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.questions}
-                    disableUnderline
-                    rows={4}
-                  />
-                )}
-              />
-              <ErrorMessage>
-                {errors.questions && touched.questions && errors.questions}
-              </ErrorMessage>
-              <Button
-                type="submit"
-                variant="contained"
-                style={{ marginTop: "25px", fontSize: "16px" }}
-              >
-                <CircularProgress
-                  style={{
-                    width: "28px",
-                    height: "28px",
-                    display: isSending ? "inline" : "none"
-                  }}
-                />
-                <div style={{ display: isSending ? "none" : "block" }}>
-                  Send
-                </div>
-              </Button>
-            </form>
-          )}
-        </Formik>
+          <CircularProgress
+            style={{
+              width: "28px",
+              height: "28px",
+              display: isSending ? "inline" : "none",
+            }}
+          />
+          <div style={{ display: isSending ? "none" : "block" }}>Send</div>
+        </Button>
       </Container>
       <MessageSentSnackbar
         submitError={submitError}

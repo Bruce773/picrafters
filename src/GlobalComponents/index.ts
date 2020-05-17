@@ -4,3 +4,4 @@ export * from "./Image";
 export * from "./Header";
 export * from "./ParagraphText";
 export * from "./StyledInputs";
+export * from "./elements";

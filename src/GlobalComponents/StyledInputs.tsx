@@ -1,35 +1,36 @@
-import Input from "@material-ui/core/Input";
+import TextField from "@material-ui/core/TextField";
 import styled from "styled-components";
 import { brightBlue, lightGrey } from "../colors";
 
-export const StyledInput = styled(Input)`
+export const StyledTextField = styled(TextField)`
   padding: 6px 16px;
   border-radius: 6px;
   background-color: ${lightGrey};
   font-size: 24px;
   && {
-    color: ${brightBlue};
+    input {
+      padding: 12px;
+      color: ${brightBlue};
+    }
   }
-  .MuiInputBase-input {
-    width: 120%;
-    min-width: 300px;
-  }
+  width: inherit;
+  margin-right: auto;
+  margin-left: auto;
 `;
 
-export const StyledMultiLineInput = styled(StyledInput)`
-  && {
-    display: block;
-  }
+export const StyledMultiLineTextField = styled(StyledTextField)`
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
-  width: fit-content;
+  width: inherit;
 
   && {
-    padding: 16px;
-  }
-
-  .MuiInputBase-input {
-    width: auto;
+    textarea {
+      padding: 12px;
+      color: ${brightBlue};
+    }
+    .MuiInput-underline:after {
+      display: none;
+    }
   }
 `;

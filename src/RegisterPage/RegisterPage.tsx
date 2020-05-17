@@ -10,9 +10,8 @@ import React, { Dispatch, SetStateAction, useState } from "react";
 import { brightBlue } from "../colors";
 import {
   Header,
-  Link,
-  StyledInput,
-  StyledMultiLineInput,
+  StyledTextField,
+  StyledMultiLineTextField,
 } from "../GlobalComponents";
 import { MessageSnackBar } from "./MessageSnackBar";
 import { SeeMoreInfoSection } from "./SeeMoreInfoSection";
@@ -47,7 +46,7 @@ export const RegisterPage: React.FC = () => {
       setName,
       setEmail,
       setClassType,
-      setQuestions
+      setQuestions,
     ].forEach((item: (arg0: string) => void) => item(""));
   };
 
@@ -57,7 +56,7 @@ export const RegisterPage: React.FC = () => {
         name,
         email,
         classType,
-        questions
+        questions,
       })
       .then(({ status }) => {
         setStatus(status);
@@ -72,14 +71,14 @@ export const RegisterPage: React.FC = () => {
     {
       label: `Student's Name`,
       value: name,
-      updateValue: setName
+      updateValue: setName,
     },
     {
       label: `Email`,
       value: email,
       updateValue: setEmail,
-      style: { margin: "atuo", marginTop: "20px" }
-    }
+      style: { margin: "atuo", marginTop: "20px" },
+    },
   ];
 
   return (
@@ -101,12 +100,11 @@ export const RegisterPage: React.FC = () => {
         <Divider style={{ marginTop: "25px", marginBottom: "30px" }} />
         {formFields.map(({ label, value, updateValue, style }) => (
           <div style={style}>
-            <StyledInput
+            <StyledTextField
               onChange={({ target: { value } }) => updateValue(value)}
               required
               value={value}
               placeholder={label}
-              disableUnderline
             />
           </div>
         ))}
@@ -130,12 +128,11 @@ export const RegisterPage: React.FC = () => {
           </Select>
         </FormControl>
         <MoreInfo classType={classType} />
-        <StyledMultiLineInput
+        <StyledMultiLineTextField
           onChange={({ target: { value } }) => setQuestions(value)}
           value={questions}
           placeholder="Questions or comments"
           multiline
-          disableUnderline
           rows={4}
         />
       </Container>
