@@ -88,7 +88,9 @@ export const SurveyPage: React.FC = () => {
     },
     errors,
     touched,
+    validateForm,
     resetForm,
+    setTouched,
   } = useFormik({
     initialValues: {
       name: "",
@@ -124,6 +126,7 @@ export const SurveyPage: React.FC = () => {
           onBlur={handleBlur}
           value={email}
         />
+        <Error>{errors.email && touched.email && errors.email}</Error>
         <RadioGroupWrapper>
           <FormLabel style={{ marginBottom: "10px" }} component="legend">
             Would you like to continue through the summer?
@@ -137,7 +140,6 @@ export const SurveyPage: React.FC = () => {
             <FormControlLabel value="no" label="No" control={<Radio />} />
           </StyledRadioGroup>
         </RadioGroupWrapper>
-        <Error>{errors.email && touched.email && errors.email}</Error>
         <StyledMultiLineTextField
           name="favorite_part"
           placeholder="What was your favorite part of this Pi Crafters semester?"
@@ -183,22 +185,33 @@ export const SurveyPage: React.FC = () => {
         <Button
           variant="contained"
           style={{ marginTop: "25px", fontSize: "16px" }}
-          onClick={() =>
-            !errors.name &&
-            !errors.email &&
-            !errors.favorite_part &&
-            !errors.one_thing_you_would_change &&
-            !errors.would_recommend &&
-            handleSubmit({
-              name,
-              email,
-              continue_through_summer,
-              favorite_part,
-              one_thing_you_would_change,
-              would_recommend,
-              resetForm,
-            })
-          }
+          onClick={() => {
+            (async () => {
+              const errors = await validateForm();
+              !errors.name &&
+              !errors.email &&
+              !errors.favorite_part &&
+              !errors.one_thing_you_would_change &&
+              !errors.would_recommend
+                ? handleSubmit({
+                    name,
+                    email,
+                    continue_through_summer,
+                    favorite_part,
+                    one_thing_you_would_change,
+                    would_recommend,
+                    resetForm,
+                  })
+                : setTouched({
+                    name: true,
+                    email: true,
+                    continue_through_summer: true,
+                    favorite_part: true,
+                    one_thing_you_would_change: true,
+                    would_recommend: true,
+                  });
+            })();
+          }}
         >
           <CircularProgress
             style={{
