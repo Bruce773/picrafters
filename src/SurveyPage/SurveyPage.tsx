@@ -13,10 +13,15 @@ import axios from "axios";
 import { MessageSentSnackbar } from "../ContactUsPage";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { StyledRadioGroup, RadioGroupWrapper } from "./elements";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Radio from "@material-ui/core/Radio";
+import FormLabel from "@material-ui/core/FormLabel";
 
 interface HandleSubmitArgs {
   name: string;
   email: string;
+  continue_through_summer: string;
   favorite_part: string;
   one_thing_you_would_change: string;
   would_recommend: string;
@@ -42,6 +47,7 @@ export const SurveyPage: React.FC = () => {
     name,
     email,
     favorite_part,
+    continue_through_summer,
     one_thing_you_would_change,
     would_recommend,
     resetForm,
@@ -51,6 +57,7 @@ export const SurveyPage: React.FC = () => {
       .post("https://formspree.io/mnqgjnej", {
         name,
         email,
+        continue_through_summer,
         favorite_part,
         one_thing_you_would_change,
         would_recommend,
@@ -74,6 +81,7 @@ export const SurveyPage: React.FC = () => {
     values: {
       name,
       email,
+      continue_through_summer,
       favorite_part,
       one_thing_you_would_change,
       would_recommend,
@@ -85,6 +93,7 @@ export const SurveyPage: React.FC = () => {
     initialValues: {
       name: "",
       email: "",
+      continue_through_summer: "yes",
       favorite_part: "",
       one_thing_you_would_change: "",
       would_recommend: "",
@@ -115,6 +124,19 @@ export const SurveyPage: React.FC = () => {
           onBlur={handleBlur}
           value={email}
         />
+        <RadioGroupWrapper>
+          <FormLabel style={{ marginBottom: "10px" }} component="legend">
+            Would you like to continue through the summer?
+          </FormLabel>
+          <StyledRadioGroup
+            name="continue_through_summer"
+            value={continue_through_summer}
+            onChange={handleChange}
+          >
+            <FormControlLabel value="yes" label="Yes" control={<Radio />} />
+            <FormControlLabel value="no" label="No" control={<Radio />} />
+          </StyledRadioGroup>
+        </RadioGroupWrapper>
         <Error>{errors.email && touched.email && errors.email}</Error>
         <StyledMultiLineTextField
           name="favorite_part"
@@ -170,6 +192,7 @@ export const SurveyPage: React.FC = () => {
             handleSubmit({
               name,
               email,
+              continue_through_summer,
               favorite_part,
               one_thing_you_would_change,
               would_recommend,
