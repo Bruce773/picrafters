@@ -76,6 +76,8 @@ export const ContactUsPage: React.FC = () => {
     errors,
     touched,
     resetForm,
+    validateForm,
+    setTouched,
   } = useFormik({
     initialValues: {
       name: "",
@@ -124,12 +126,14 @@ export const ContactUsPage: React.FC = () => {
         <Button
           variant="contained"
           style={{ marginTop: "25px", fontSize: "16px" }}
-          onClick={() =>
-            !errors.email &&
-            !errors.name &&
-            !errors.questions &&
-            handleSubmit({ name, email, questions, resetForm })
-          }
+          onClick={() => {
+            (async () => {
+              const errors = await validateForm();
+              !errors.email && !errors.name && !errors.questions
+                ? handleSubmit({ name, email, questions, resetForm })
+                : setTouched({ email: true, name: true, questions: true });
+            })();
+          }}
         >
           <CircularProgress
             style={{
