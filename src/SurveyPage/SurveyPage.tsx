@@ -35,7 +35,7 @@ const validationSchema = Yup.object({
     .required("You must enter an email address"),
   name: Yup.string().required("You must enter your name"),
   favorite_part: Yup.string().required("This is a required field"),
-  like_to_learn_over_summer: Yup.string().required("This is a required field"),
+  like_to_learn_over_summer: Yup.string(),
   one_thing_you_would_change: Yup.string().required("This is a required field"),
   would_recommend: Yup.string().required("This is a required field"),
 });
