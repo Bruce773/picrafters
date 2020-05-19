@@ -3,7 +3,7 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import { brightBlue, gold } from "../colors";
 
 export const RadioGroupWrapper = styled.div`
-  margin-top: 20px;
+  margin-top: 30px;
   text-align: left;
 `;
 

@@ -34,6 +34,8 @@ const validationSchema = Yup.object({
     .required("You must enter an email address"),
   name: Yup.string().required("You must enter your name"),
   favorite_part: Yup.string().required("This is a required field"),
+  like_to_learn_over_summer: Yup.string().required("This is a required field"),
+  continue_through_summer: Yup.bool(),
   one_thing_you_would_change: Yup.string().required("This is a required field"),
   would_recommend: Yup.string().required("This is a required field"),
 });
@@ -82,6 +84,7 @@ export const SurveyPage: React.FC = () => {
       name,
       email,
       continue_through_summer,
+      like_to_learn_over_summer,
       favorite_part,
       one_thing_you_would_change,
       would_recommend,
@@ -96,6 +99,7 @@ export const SurveyPage: React.FC = () => {
       name: "",
       email: "",
       continue_through_summer: "yes",
+      like_to_learn_over_summer: "",
       favorite_part: "",
       one_thing_you_would_change: "",
       would_recommend: "",
@@ -140,6 +144,27 @@ export const SurveyPage: React.FC = () => {
             <FormControlLabel value="no" label="No" control={<Radio />} />
           </StyledRadioGroup>
         </RadioGroupWrapper>
+        <Error>
+          {errors.continue_through_summer &&
+            touched.continue_through_summer &&
+            errors.continue_through_summer}
+        </Error>
+        {continue_through_summer === "yes" && (
+          <StyledMultiLineTextField
+            name="like_to_learn_over_summer"
+            placeholder="What are a few things you'd like to learn over the summer?"
+            multiline
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={like_to_learn_over_summer}
+            rows={4}
+          />
+        )}
+        <Error>
+          {errors.like_to_learn_over_summer &&
+            touched.like_to_learn_over_summer &&
+            errors.like_to_learn_over_summer}
+        </Error>
         <StyledMultiLineTextField
           name="favorite_part"
           placeholder="What was your favorite part of this Pi Crafters semester?"
