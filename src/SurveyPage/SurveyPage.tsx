@@ -22,6 +22,7 @@ interface HandleSubmitArgs {
   name: string;
   email: string;
   continue_through_summer: string;
+  like_to_learn_over_summer: string;
   favorite_part: string;
   one_thing_you_would_change: string;
   would_recommend: string;
@@ -35,7 +36,6 @@ const validationSchema = Yup.object({
   name: Yup.string().required("You must enter your name"),
   favorite_part: Yup.string().required("This is a required field"),
   like_to_learn_over_summer: Yup.string().required("This is a required field"),
-  continue_through_summer: Yup.bool(),
   one_thing_you_would_change: Yup.string().required("This is a required field"),
   would_recommend: Yup.string().required("This is a required field"),
 });
@@ -50,6 +50,7 @@ export const SurveyPage: React.FC = () => {
     email,
     favorite_part,
     continue_through_summer,
+    like_to_learn_over_summer,
     one_thing_you_would_change,
     would_recommend,
     resetForm,
@@ -61,6 +62,7 @@ export const SurveyPage: React.FC = () => {
         email,
         continue_through_summer,
         favorite_part,
+        like_to_learn_over_summer,
         one_thing_you_would_change,
         would_recommend,
       })
@@ -216,12 +218,14 @@ export const SurveyPage: React.FC = () => {
               !errors.name &&
               !errors.email &&
               !errors.favorite_part &&
+              !errors.like_to_learn_over_summer &&
               !errors.one_thing_you_would_change &&
               !errors.would_recommend
                 ? handleSubmit({
                     name,
                     email,
                     continue_through_summer,
+                    like_to_learn_over_summer,
                     favorite_part,
                     one_thing_you_would_change,
                     would_recommend,
@@ -231,6 +235,7 @@ export const SurveyPage: React.FC = () => {
                     name: true,
                     email: true,
                     continue_through_summer: true,
+                    like_to_learn_over_summer: true,
                     favorite_part: true,
                     one_thing_you_would_change: true,
                     would_recommend: true,
