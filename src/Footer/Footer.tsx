@@ -5,7 +5,6 @@ import Typography from "@material-ui/core/Typography";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import React from "react";
 import { brightBlue, gold } from "../colors";
-import { Link } from "../GlobalComponents";
 
 export const Footer = () => {
   const currentDate = new Date();
@@ -19,7 +18,7 @@ export const Footer = () => {
             fontSize: "2vh",
             color: gold,
             padding: "20px",
-            paddingBottom: "0px"
+            paddingBottom: "0px",
           }}
         >
           Copyright {currentDate.getFullYear()} © Pi Crafters
@@ -28,6 +27,7 @@ export const Footer = () => {
           style={{ display: "inline", color: brightBlue }}
           href="https://www.facebook.com/picrafters4u/"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <FacebookIcon color="inherit" fontSize="large" />
         </a>

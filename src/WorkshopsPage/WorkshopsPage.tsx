@@ -17,6 +17,7 @@ export const WorkshopsPage: React.FC = () => {
     if (hash && elementWithMatchingId) {
       elementWithMatchingId.scrollIntoView({ behavior: "smooth" });
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [elementWithMatchingId]);
 
   return (

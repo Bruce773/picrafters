@@ -8,6 +8,7 @@ interface Props {
 
 export const Image: React.FC<Props> = ({ shortName, size, style }) => (
   <img
+    alt="alt text"
     style={style}
     src={`https://ik.imagekit.io/3aek1kxt2/pi-crafters/${shortName}?tr=w-${size}`}
   />

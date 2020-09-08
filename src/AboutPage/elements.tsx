@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { brightBlue, gold } from "../colors";
+import { gold } from "../colors";
 
 export const Header = styled.div`
   margin: auto;
@@ -9,4 +9,3 @@ export const Header = styled.div`
   font-weight: bold;
   margin-bottom: 15px;
 `;
-
